@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // Nombres de colores disponibles
     $colores_disponibles = [
         "azul", "rojo", "verde", "amarillo", 
