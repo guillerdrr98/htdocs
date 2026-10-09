@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Generador de Círculos</title>
+  </head>
+  <body>
+    <h2>Configuración de Círculos y Colores</h2>
+    <form action="pintar-circulos.php" method="POST">
+      <label for="num_circulos"
+        >Número de círculos a dibujar (entre 4 y 8):</label
+      ><br />
+      <input
+        type="number"
+        id="num_circulos"
+        name="num_circulos"
+        min="4"
+        max="8"
+        required
+      /><br /><br />
+
+      <label for="num_colores"
+        >Número de colores diferentes a usar (máximo 8):</label
+      ><br />
+      <input
+        type="number"
+        id="num_colores"
+        name="num_colores"
+        min="1"
+        max="8"
+        required
+      /><br /><br />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

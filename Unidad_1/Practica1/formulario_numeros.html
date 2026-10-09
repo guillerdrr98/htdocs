@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <form
+      action="calc.php"
+      method="POST"
+      style="border: 1px solid black; padding: 20px; width: 250px"
+    >
+      <label for="num1">Número 1</label><br />
+      <input type="number" id="num1" name="num1" required /><br /><br />
+
+      <label for="num2">Número 2</label><br />
+      <input type="number" id="num2" name="num2" required /><br /><br />
+
+      <label for="operacion">Operación</label><br />
+      <select id="operacion" name="operacion" required>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option></select
+      ><br /><br />
+
+      <button type="submit">Calcula</button>
+    </form>
+  </body>
+</html>
