@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $svg_resultado = $_SESSION['svg_resultado'];
+    $solucion = $_SESSION['svg_resultado'];
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <h2>Solucion obtenida(pintada desde <code>\$_SESSION</code>):</h2>
 
     <div>
-        <?= $svg_resultado ?>
+        <?= $solucion ?>
     </div>
 
     <a href="resultado.php">
