@@ -15,44 +15,44 @@
 
     // PROCESAMIENTO DE DATOS DEL FORMULARIO
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $num_circulos = isset($_POST['num_circulos']) ? (int)$_POST['num_circulos'] : 0;
-    $num_colores = isset($_POST['num_colores']) ? (int)$_POST['num_colores'] : 0;
+        $num_circulos = isset($_POST['num_circulos']) ? (int)$_POST['num_circulos'] : 0;
+        $num_colores = isset($_POST['num_colores']) ? (int)$_POST['num_colores'] : 0;
 
-    // Extraer los N primeros colores de la lista
-    $paleta_seleccionada = array_slice($colores_hex, 0, $num_colores);
-    $paleta_texto = array_slice($colores_disponibles, 0, $num_colores);
+        // Extraer los N primeros colores de la lista
+        $paleta_seleccionada = array_slice($colores_hex, 0, $num_colores);
+        $paleta_texto = array_slice($colores_disponibles, 0, $num_colores);
 
-    // Generar la lista de círculos asignando aleatoriamente colores PERO solo de los N primeros seleccionados
-    $lista_colores = [];
-    $lista_nombres_colores = [];
-    for ($i = 0; $i < $num_circulos; $i++) {
-        if (!empty($paleta_seleccionada)) {
-            $indice_azar = rand(0, count($paleta_seleccionada) - 1);
-            $color_azar = $paleta_seleccionada[$indice_azar];
+        // Generar la lista de círculos asignando aleatoriamente colores PERO solo de los N primeros seleccionados
+        $lista_colores = [];
+        $lista_nombres_colores = [];
+        for ($i = 0; $i < $num_circulos; $i++) {
+            if (!empty($paleta_seleccionada)) {
+                $indice_azar = rand(0, count($paleta_seleccionada) - 1);
+                $color_azar = $paleta_seleccionada[$indice_azar];
             
-            // Guardamos el color en formato hexadecimal para el SVG
-            array_push($lista_colores, $color_azar);
-            // Guardamos también su nombre correspondiente en texto
-            array_push($lista_nombres_colores, $paleta_texto[$indice_azar]);
+                // Guardamos el color en formato hexadecimal para el SVG
+                array_push($lista_colores, $color_azar);
+                // Guardamos también su nombre correspondiente en texto
+                array_push($lista_nombres_colores, $paleta_texto[$indice_azar]);
+            }
         }
+
+        $_SESSION['combinacion_colores_texto'] = $lista_nombres_colores;
+
+        // Generar el SVG
+        $svg_resultado = pintar_circulos($lista_colores);
+        $svg_negro = pintar_circulos_negro($num_circulos);
+
+        $_SESSION['svg_resultado'] = $svg_resultado;
+        $_SESSION['svg_negro'] = $svg_negro;
+        $_SESSION['paleta_texto'] = $paleta_texto;
+        $_SESSION['num_circulos'] = $num_circulos;
     }
 
-    $_SESSION['combinacion_colores_texto'] = $lista_nombres_colores;
-
-    // Generar el SVG
-    $svg_resultado = pintar_circulos($lista_colores);
-    $svg_negro = pintar_circulos_negro($num_circulos);
-
-    $_SESSION['svg_resultado'] = $svg_resultado;
-    $_SESSION['svg_negro'] = $svg_negro;
-    $_SESSION['paleta_texto'] = $paleta_texto;
-    $_SESSION['num_circulos'] = $num_circulos;
-}
-
-$combinacion_sesion = $_SESSION['combinacion_colores_texto'];
-$solucion_negro = $_SESSION['svg_negro'];
-$colores_dispo_texto = $_SESSION['paleta_texto'];
-$numero_circulos = $_SESSION['num_circulos'];
+    $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
+    $solucion_negro = $_SESSION['svg_negro'];
+    $colores_dispo_texto = $_SESSION['paleta_texto'];
+    $numero_circulos = $_SESSION['num_circulos'];
 ?>
 
 <!DOCTYPE html>
