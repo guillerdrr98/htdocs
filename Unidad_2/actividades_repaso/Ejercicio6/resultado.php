@@ -82,7 +82,11 @@ $paleta_texto = $_SESSION['paleta_texto'];
     </div>
 
     <br>
-    <a href="index.php">Volver al formulario</a>
-    <a href="solucion.php">Comenzar</a>
+    <a href="index.php">
+        <button>Volver al formulario</button>
+    </a>
+    <a href="solucion.php">
+        <button>Comenzar</button>
+    </a>
 </body>
 </html>

@@ -16,6 +16,8 @@
         <?= $svg_resultado ?>
     </div>
 
-    <a href="resultado.php">Volver</a>
+    <a href="resultado.php">
+        <button>Volver</button>
+    </a>
 </body>
 </html>
