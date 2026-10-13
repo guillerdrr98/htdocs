@@ -49,8 +49,8 @@
 }
 
 $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
-$svg_negro = $_SESSION['svg_negro'];
-$paleta_texto = $_SESSION['paleta_texto'];
+$solucion_negro = $_SESSION['svg_negro'];
+$colores_dispo_texto = $_SESSION['paleta_texto'];
 ?>
 
 <!DOCTYPE html>
@@ -63,12 +63,12 @@ $paleta_texto = $_SESSION['paleta_texto'];
     <h2>Resultado del Servidor</h2>
 
     <p><strong>Paleta de colores disponible:</strong> 
-        <?= implode(", ", $paleta_texto) ?>
+        <?= implode(", ", $colores_dispo_texto) ?>
     </p>
 
     <h3>Círculos Negros:</h3>
     <div>
-        <?= $svg_negro ?>
+        <?= $solucion_negro ?>
     </div>
 
     <h3>Combinación de colores generada (en formato texto desde <code>\$_SESSION</code>):</h3>
