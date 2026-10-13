@@ -73,11 +73,6 @@ $paleta_texto = $_SESSION['paleta_texto'];
 
     <h3>Combinación de colores generada (en formato texto desde <code>\$_SESSION</code>):</h3>
     <div>
-        <ul>
-            <?php foreach ($combinacion_sesion as $color_nombre): ?>
-                <li><?= $color_nombre?></li>
-            <?php endforeach; ?>
-        </ul>
         <p><strong>Texto plano:</strong> <?= implode(" - ", $combinacion_sesion) ?></p>
     </div>
 
