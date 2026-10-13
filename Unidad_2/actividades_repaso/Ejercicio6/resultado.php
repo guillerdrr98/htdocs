@@ -49,7 +49,6 @@
 }
 
 $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
-$svg_resultado = $_SESSION['svg_resultado'];
 $svg_negro = $_SESSION['svg_negro'];
 $paleta_texto = $_SESSION['paleta_texto'];
 ?>
@@ -84,5 +83,6 @@ $paleta_texto = $_SESSION['paleta_texto'];
 
     <br>
     <a href="index.php">Volver al formulario</a>
+    <a href="solucion.php">Comenzar</a>
 </body>
 </html>
