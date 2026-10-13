@@ -46,11 +46,13 @@
     $_SESSION['svg_resultado'] = $svg_resultado;
     $_SESSION['svg_negro'] = $svg_negro;
     $_SESSION['paleta_texto'] = $paleta_texto;
+    $_SESSION['num_circulos'] = $num_circulos;
 }
 
 $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
 $solucion_negro = $_SESSION['svg_negro'];
 $colores_dispo_texto = $_SESSION['paleta_texto'];
+$numero_circulos = $_SESSION['num_circulos'];
 ?>
 
 <!DOCTYPE html>
@@ -66,14 +68,14 @@ $colores_dispo_texto = $_SESSION['paleta_texto'];
         <?= implode(", ", $colores_dispo_texto) ?>
     </p>
 
-    <h3>Círculos Negros:</h3>
+    <h3>Círculos Negros (deberían ser <?= $numero_circulos?>):</h3>
     <div>
         <?= $solucion_negro ?>
     </div>
 
-    <h3>Combinación de colores generada (en formato texto desde <code>\$_SESSION</code>):</h3>
+    <h3>Combinación de colores generada (en texto plano desde <code>\$_SESSION</code>):</h3>
     <div>
-        <p><strong>Texto plano:</strong> <?= implode(" - ", $combinacion_sesion) ?></p>
+        <p><?= implode(" - ", $combinacion_sesion) ?></p>
     </div>
 
     <br>
