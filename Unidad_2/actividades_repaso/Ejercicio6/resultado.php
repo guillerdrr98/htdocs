@@ -64,13 +64,13 @@
     <title>Combinación de Colores Modular</title>
 </head>
 <body>
-    <h2>Resultado del Servidor</h2>
+    <h2>Simón dice:</h2>
 
     <p><strong>Paleta de colores disponible:</strong> 
         <?= implode(", ", $colores_dispo_texto) ?>
     </p>
 
-    <h3>Combinación de colores generada (desde <code>\$_SESSION</code>):</h3>
+    <h3>Combinación de colores generada (en círculos desde <code>\$_SESSION</code>):</h3>
     <div>
         <?= $solucion ?>
     </div>
