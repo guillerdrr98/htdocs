@@ -1,4 +1,5 @@
 <?php
+    // Función que pinta la solución del juego de Simón en pantalla
     function pintar_circulos(array $colores) {
         $total = count($colores);
 
@@ -23,6 +24,7 @@
         return $svg;
     }
 
+    // Función que genera los círculos negros para jugar al Simón
     function pintar_circulos_negro($num_circulos) {
 
         $radio = 30;
