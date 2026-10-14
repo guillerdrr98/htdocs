@@ -41,7 +41,8 @@
         $svg_resultado = pintar_circulos($lista_colores);
         $svg_negro = pintar_circulos_negro($num_circulos);
 
-        // Guardamos los colores en formato texto, el resultado a color, el resultado en negro, la paleta en formato texto y el número de círculos en variables de sesión
+        // Guardamos los colores aleatorios en formato texto, el resultado a color, el resultado en negro, 
+        // la paleta en formato texto y el número de círculos en variables de sesión
         $_SESSION['combinacion_colores_texto'] = $lista_nombres_colores;
         $_SESSION['svg_resultado'] = $svg_resultado;
         $_SESSION['svg_negro'] = $svg_negro;
