@@ -86,7 +86,7 @@
         <button>Volver al formulario</button>
     </a>
     <a href="solucion.php">
-        <button>Comenzar</button>
+        <button>Ver solución</button>
     </a>
 </body>
 </html>
