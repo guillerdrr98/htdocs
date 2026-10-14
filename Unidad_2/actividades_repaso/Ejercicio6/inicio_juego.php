@@ -1,5 +1,6 @@
 <?php
     session_start();
+    // Accedemos a las variables de sesión que vamos a utilizar
     $solucion_negro = $_SESSION['svg_negro'];
     $numero_circulos = $_SESSION['num_circulos'];
 ?>
