@@ -1,6 +1,7 @@
 <?php
     session_start();
-    $solucion = $_SESSION['svg_resultado'];
+    $solucion_negro = $_SESSION['svg_negro'];
+    $numero_circulos = $_SESSION['num_circulos'];
 ?>
 
 <!DOCTYPE html>
@@ -10,10 +11,10 @@
     <title>Combinación de Colores Solucion</title>
 </head>
 <body>
-    <h2>Solucion obtenida(pintada desde <code>\$_SESSION</code>):</h2>
+    <h2>Círculos Negros (deberían ser <?= $numero_circulos?>):</h2>
 
     <div>
-        <?= $solucion ?>
+        <?= $solucion_negro ?>
     </div>
 
     <a href="resultado.php">

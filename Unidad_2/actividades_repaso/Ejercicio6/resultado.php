@@ -53,9 +53,8 @@
 
     // Accedemos a los valores de las variables de sesión para su posterior uso
     $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
-    $solucion_negro = $_SESSION['svg_negro'];
+    $solucion = $_SESSION['svg_resultado'];
     $colores_dispo_texto = $_SESSION['paleta_texto'];
-    $numero_circulos = $_SESSION['num_circulos'];
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +70,9 @@
         <?= implode(", ", $colores_dispo_texto) ?>
     </p>
 
-    <h3>Círculos Negros (deberían ser <?= $numero_circulos?>):</h3>
+    <h3>Combinación de colores generada (desde <code>\$_SESSION</code>):</h3>
     <div>
-        <?= $solucion_negro ?>
+        <?= $solucion ?>
     </div>
 
     <h3>Combinación de colores generada (en texto plano desde <code>\$_SESSION</code>):</h3>
@@ -85,8 +84,8 @@
     <a href="index.php">
         <button>Volver al formulario</button>
     </a>
-    <a href="solucion.php">
-        <button>Ver solución</button>
+    <a href="inicio_juego.php">
+        <button>Comenzar</button>
     </a>
 </body>
 </html>
