@@ -5,7 +5,7 @@
     <title>Simón dice... - Configuración</title>
 </head>
 <body>
-    <h2>Formulario de Configuración</h2>
+    <h2>Configuración Simón dice...</h2>
     <form action="solucion.php" method="POST">
         <label for="nom_usuario">Nombre:</label>
         <input type="text" id="nom_usuario" name="nom_usuario" required><br><br>

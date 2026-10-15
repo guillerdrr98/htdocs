@@ -73,12 +73,12 @@
         <?= implode(", ", $colores_dispo_texto) ?>
     </p>
 
-    <h3>Combinación de colores generada (en círculos desde <code>\$_SESSION</code>):</h3>
+    <h3>Combinación de colores generada:</h3>
     <div>
-        <?= $solucion ?>
+        <?= $solucion_final ?>
     </div>
 
-    <h3>Combinación de colores generada (en texto plano desde <code>\$_SESSION</code>):</h3>
+    <h3>Combinación de colores generada en texto plano:</h3>
     <div>
         <p><?= implode(" - ", $combinacion_sesion) ?></p>
     </div>
