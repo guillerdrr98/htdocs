@@ -3,7 +3,6 @@
     require 'funciones.php';
 
     // Accedemos a las variables de sesión
-    $solucion_negro = $_SESSION['svg_negro'];
     $numero_circulos = $_SESSION['num_circulos'];
     $paleta_colores_texto = $_SESSION['paleta_texto'];
     $paleta_hex = $_SESSION['colores_hex'];
@@ -13,30 +12,27 @@
     $juego_finalizado = false;
     $mensaje_resultado = "";
 
-    // Inicializamos las variables de la partida si no existen
-    if (!isset($_SESSION['jugada'])) {
-        $_SESSION['jugada'] = array();
-    }
-    if (!isset($_SESSION['pulsaciones'])) {
-        $_SESSION['pulsaciones'] = 0;
-    }
 
     // Procesar la pulsación del botón
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (isset($_POST['color_elegido']) && $_SESSION['pulsaciones'] < $numero_circulos) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['color_elegido'])) {
+        if ($_SESSION['pulsaciones'] < $numero_circulos) {
             $color_seleccionado = $_POST['color_elegido'];
-            
+        
+            // Guardar jugada e incrementar contador
             $_SESSION['jugada'][] = $color_seleccionado;
             $_SESSION['pulsaciones']++;
         }
     }
 
+    $jugada = $_SESSION['jugada'];
+    $pulsaciones = $_SESSION['pulsaciones'];
+
     // Comprobar si se ha alcanzado el número total de círculos
-    if ($_SESSION['pulsaciones'] === $numero_circulos) {
+    if ($pulsaciones === $numero_circulos) {
         $juego_finalizado = true;
     
         // Comparación estricta de ambos arrays (mismos colores y mismo orden)
-        if ($_SESSION['jugada'] === $solucion_texto) {
+        if ($jugada === $solucion_texto) {
             $mensaje_resultado = "<h3 style='color: green;'>¡Enhorabuena! Has ganado</h3>";
         } else {
             $mensaje_resultado = "<h3 style='color: red;'>¡Has perdido! La combinación no es correcta.</h3>";
@@ -44,7 +40,7 @@
     }
 
     // Generar el SVG dinámico según las jugadas registradas hasta el momento
-    $svg_actual = generar_svg_juego($_SESSION['jugada'], $numero_circulos, $paleta_colores_texto, $paleta_hex);
+    $jugada_actual = actualizar_juego($jugada, $numero_circulos, $paleta_colores_texto, $paleta_hex);
 ?>
 
 <!DOCTYPE html>
@@ -57,8 +53,8 @@
     <h2>Progreso de la partida (Pulsación <?= $_SESSION['pulsaciones'] ?> de <?= $numero_circulos ?>):</h2>
 
     <div>
-        <!-- CORRECCIÓN 1: Imprimimos $svg_actual para que se vean los círculos pintados -->
-        <?= $svg_actual ?>
+        <!-- Imprimimos $svg_actual para que se vean los círculos pintados -->
+        <?= $jugada_actual ?>
 
         <form method="POST">
             <?php
@@ -77,10 +73,6 @@
             echo $mensaje_resultado;
             echo "<p><strong>Solución correcta: </strong>" . implode(", ", $solucion_texto) . "</p>";
             echo '<a href="index.php"><button>Jugar otra vez</button></a>';
-
-            // CORRECCIÓN 2: Limpiamos las variables de la partida terminada en la sesión
-            unset($_SESSION['jugada']);
-            unset($_SESSION['pulsaciones']);
         }
     ?>
 </body>

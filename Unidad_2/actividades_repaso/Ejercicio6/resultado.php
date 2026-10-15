@@ -40,16 +40,17 @@
 
         // Generar el SVG
         $svg_resultado = pintar_circulos($lista_colores);
-        $svg_negro = pintar_circulos_negro($num_circulos);
 
         // Guardamos los datos que consideremos necesarios en variables de sesión
         $_SESSION['combinacion_colores_texto'] = $lista_nombres_colores;
         $_SESSION['svg_resultado'] = $svg_resultado;
-        $_SESSION['svg_negro'] = $svg_negro;
         $_SESSION['paleta_texto'] = $paleta_texto;
         $_SESSION['num_circulos'] = $num_circulos;
         $_SESSION['nom_usuario'] = $nombre_usuario;
         $_SESSION['colores_hex'] = $paleta_seleccionada;
+
+        $_SESSION['jugada'] = array();
+        $_SESSION['pulsaciones'] = 0;
     }
 
     // Accedemos a los valores de las variables de sesión para su posterior uso
@@ -80,11 +81,6 @@
     <h3>Combinación de colores generada (en texto plano desde <code>\$_SESSION</code>):</h3>
     <div>
         <p><?= implode(" - ", $combinacion_sesion) ?></p>
-    </div>
-
-    <h3>Comprobación de que las variables de sesión guardan los datos</h3>
-    <div>
-        <p><?= var_dump($_SESSION) ?></p>
     </div>
 
     <br>

@@ -24,58 +24,28 @@
         return $svg;
     }
 
-    // Función que genera los círculos negros para jugar al Simón
-    function pintar_circulos_negro($num_circulos) {
-
-        $radio = 30;
-        $espaciado = 80;
-        $cy = 50;
-        $ancho_svg = $num_circulos * $espaciado;
-        $alto_svg = 100;
-
-        $svg = "<svg width='{$ancho_svg}' height='{$alto_svg}' xmlns='http://www.w3.org/2000/svg'>\n";
-
-        for ($i = 0; $i < $num_circulos; $i++) {
-            // Usamos la clave $i para calcular la posición X de cada círculo
-            $cx = ($i * $espaciado) + ($espaciado / 2);
-            $svg .= "  <circle cx='{$cx}' cy='{$cy}' r='{$radio}' fill='#000000' stroke='#333' stroke-width='2' />\n";
-        };
-
-        $svg .= "</svg>";
-
-        return $svg;
-    }
-
-    // 5. Función para generar el SVG del avance actual sin usar array_combine
-    function generar_svg_juego(array $jugada, int $total_circulos, array $paleta_texto, array $paleta_hex): string {
-        $radio = 30;
-        $espaciado = 80;
-        $cy = 50;
-        $ancho_svg = $total_circulos * $espaciado;
-        $alto_svg = 100;
-
-        $svg = "<svg width='{$ancho_svg}' height='{$alto_svg}' xmlns='http://www.w3.org/2000/svg'>\n";
+    // Función para generar el SVG del avance actual sin usar array_combine
+    function actualizar_juego(array $jugada, int $total_circulos, array $paleta_texto, array $paleta_hex): string {
+        $colores_a_pintar = [];
 
         for ($i = 0; $i < $total_circulos; $i++) {
-            $cx = ($i * $espaciado) + ($espaciado / 2);
-        
+            // Si la posición $i ya fue jugada, traducimos el nombre de color a su Hex
             if (isset($jugada[$i])) {
                 $nombre_color = $jugada[$i];
                 $posicion = array_search($nombre_color, $paleta_texto);
-            
+
                 if ($posicion !== false) {
-                    $fill = $paleta_hex[$posicion];
+                    $colores_a_pintar[] = $paleta_hex[$posicion];
                 } else {
-                    $fill = "#000000";
+                    $colores_a_pintar[] = "#000000";
                 }
             } else {
-                $fill = "#000000"; // Negro si no se ha jugado aún
+                // Si aún no se ha pulsado, colocamos el círculo en negro
+                $colores_a_pintar[] = "#000000";
             }
-
-            $svg .= "  <circle cx='{$cx}' cy='{$cy}' r='{$radio}' fill='{$fill}' stroke='#333' stroke-width='2' />\n";
         }
 
-        $svg .= "</svg>";
-        return $svg;
+        // Delegamos la generación del SVG a pintar_circulos()
+        return pintar_circulos($colores_a_pintar);
     }
 ?>
