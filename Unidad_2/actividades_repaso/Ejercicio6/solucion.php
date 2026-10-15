@@ -64,7 +64,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Combinación de Colores Modular</title>
+    <title>Simón dice... - Solución</title>
 </head>
 <body>
     <h2>¡Hola, <?= $nombre ?>! Simón dice...:</h2>
@@ -87,7 +87,7 @@
     <a href="index.php">
         <button>Volver al formulario</button>
     </a>
-    <a href="inicio_juego.php">
+    <a href="partida.php">
         <button>Comenzar</button>
     </a>
 </body>

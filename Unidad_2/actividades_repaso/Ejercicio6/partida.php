@@ -47,7 +47,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Simón dice...</title>
+    <title>Simón dice... - Partida</title>
 </head>
 <body>
     <h2>Progreso de la partida (Pulsación <?= $_SESSION['pulsaciones'] ?> de <?= $numero_circulos ?>):</h2>
