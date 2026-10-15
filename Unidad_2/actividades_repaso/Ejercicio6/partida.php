@@ -70,7 +70,6 @@
 
     <?php
         if ($juego_finalizado) {
-            echo "<br>";
             echo $mensaje_resultado;
             echo "<p><strong>Solución correcta: </strong>" . implode(", ", $solucion_texto) . "</p>";
             echo '<a href="index.php"><button>Jugar otra vez</button></a>';
