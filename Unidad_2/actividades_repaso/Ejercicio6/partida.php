@@ -61,7 +61,8 @@
                 for ($i = 0; $i < $num_colores; $i++) {
                     // Desactivar botones si la partida ya ha finalizado
                     $disabled = $juego_finalizado ? 'disabled' : '';
-                    echo '<button name="color_elegido" value="' . $paleta_colores_texto[$i] . '" style="background-color: ' . $paleta_hex[$i] . '; color: black; margin: 5px;" type="submit" ' . $disabled . '>'. $paleta_colores_texto[$i]. '</button>';
+                    echo '<button name="color_elegido" value="' . $paleta_colores_texto[$i] . '" style="background-color: ' . $paleta_hex[$i] . ';
+                    color: black; margin: 5px;" type="submit" ' . $disabled . '>'. $paleta_colores_texto[$i]. '</button>';
                 }
             ?>
         </form>

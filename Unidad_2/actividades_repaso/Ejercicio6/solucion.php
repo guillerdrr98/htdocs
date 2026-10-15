@@ -39,11 +39,11 @@
         }
 
         // Generar el SVG
-        $svg_resultado = pintar_circulos($lista_colores);
+        $comb_solucion = pintar_circulos($lista_colores);
 
         // Guardamos los datos que consideremos necesarios en variables de sesión
         $_SESSION['combinacion_colores_texto'] = $lista_nombres_colores;
-        $_SESSION['svg_resultado'] = $svg_resultado;
+        $_SESSION['solucion'] = $comb_solucion;
         $_SESSION['paleta_texto'] = $paleta_texto;
         $_SESSION['num_circulos'] = $num_circulos;
         $_SESSION['nom_usuario'] = $nombre_usuario;
@@ -55,7 +55,7 @@
 
     // Accedemos a los valores de las variables de sesión para su posterior uso
     $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
-    $solucion = $_SESSION['svg_resultado'];
+    $solucion_final = $_SESSION['solucion'];
     $colores_dispo_texto = $_SESSION['paleta_texto'];
     $nombre = $_SESSION['nom_usuario'];
 ?>
