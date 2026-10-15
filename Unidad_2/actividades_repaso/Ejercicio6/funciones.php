@@ -32,7 +32,7 @@
             // Si la posición $i ya fue jugada, traducimos el nombre de color a su Hex
             if (isset($jugada[$i])) {
                 $nombre_color = $jugada[$i];
-                $posicion = array_search($nombre_color, $paleta_texto);
+                $posicion = array_search($nombre_color, $paleta_texto); //array_search() devuelve el índice del elemento en caso de que exista, false en caso contrario
 
                 if ($posicion !== false) {
                     $colores_a_pintar[] = $paleta_hex[$posicion];

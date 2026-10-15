@@ -53,7 +53,7 @@
     <h2>Progreso de la partida (Pulsación <?= $_SESSION['pulsaciones'] ?> de <?= $numero_circulos ?>):</h2>
 
     <div>
-        <!-- Imprimimos $svg_actual para que se vean los círculos pintados -->
+        <!-- Imprimimos $jugada_actual para que se vean los círculos pintados -->
         <?= $jugada_actual ?>
 
         <form method="POST">
