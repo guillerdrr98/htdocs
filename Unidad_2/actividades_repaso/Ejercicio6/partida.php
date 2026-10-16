@@ -24,6 +24,9 @@
         }
     }
 
+    // Se recogen los valores de las variables de sesión "jugada" y "pulsaciones"
+    // en este punto en lugar de al principio como el resto de variables debido
+    // a que el tratamiento de estos ocurre en el bloque anterior
     $jugada = $_SESSION['jugada'];
     $pulsaciones = $_SESSION['pulsaciones'];
 
