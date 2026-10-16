@@ -24,7 +24,7 @@
         return $svg;
     }
 
-    // Función para generar el SVG del avance actual sin usar array_combine
+    // Función para generar el SVG de las jugadas del Simón
     function actualizar_juego(array $jugada, int $total_circulos, array $paleta_texto, array $paleta_hex): string {
         $colores_a_pintar = [];
 
