@@ -16,7 +16,7 @@
         <label for="num_colores">Número de colores a usar (entre 2 y 8):</label>
         <input type="number" id="num_colores" name="num_colores" value="2" min="2" max="8" required><br><br>
 
-        <button type="submit">Enviar</button>
+        <button type="submit">Siguiente</button>
     </form>
 </body>
 </html>

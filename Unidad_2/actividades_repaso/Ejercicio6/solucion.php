@@ -90,7 +90,7 @@
         <button>Volver al formulario</button>
     </a>
     <a href="partida.php">
-        <button>Comenzar</button>
+        <button>Empezar Partida</button>
     </a>
 </body>
 </html>
