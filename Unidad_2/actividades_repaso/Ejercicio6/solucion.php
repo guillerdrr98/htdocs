@@ -49,6 +49,12 @@
         $_SESSION['nom_usuario'] = $nombre_usuario;
         $_SESSION['colores_hex'] = $paleta_seleccionada;
     }
+
+    // Accedemos a los valores de las variables de sesión para su posterior uso
+    $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
+    $solucion_final = $_SESSION['solucion'];
+    $colores_dispo_texto = $_SESSION['paleta_texto'];
+    $nombre = $_SESSION['nom_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -58,20 +64,20 @@
     <title>Simón dice... - Solución</title>
 </head>
 <body>
-    <h2>¡Hola, <?= $_SESSION['nom_usuario'] ?>! Simón dice...:</h2>
+    <h2>¡Hola, <?= $nombre ?>! Simón dice...:</h2>
 
     <p><strong>Paleta de colores disponible:</strong> 
-        <?= implode(", ", $_SESSION['paleta_texto']) ?>
+        <?= implode(", ", $colores_dispo_texto) ?>
     </p>
 
     <h3>Combinación de colores generada:</h3>
     <div>
-        <?= $_SESSION['solucion'] ?>
+        <?= $solucion_final ?>
     </div>
 
     <h3>Combinación de colores generada en texto plano:</h3>
     <div>
-        <p><?= implode(" - ", $_SESSION['combinacion_colores_texto']) ?></p>
+        <p><?= implode(" - ", $combinacion_sesion) ?></p>
     </div>
 
     <br>
@@ -79,7 +85,7 @@
         <button>Volver al formulario</button>
     </a>
     <a href="partida.php">
-        <button>Empezar Partida</button>
+        <button>Comenzar Partida</button>
     </a>
 </body>
 </html>
