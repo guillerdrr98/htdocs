@@ -14,7 +14,7 @@
         <input type="number" id="num_circulos" name="num_circulos" value="4" min="4" max="8" required><br><br>
 
         <label for="num_colores">Número de colores a usar (máximo 8):</label>
-        <input type="number" id="num_colores" name="num_colores" value="1" min="1" max="8" required><br><br>
+        <input type="number" id="num_colores" name="num_colores" value="2" min="2" max="8" required><br><br>
 
         <button type="submit">Enviar</button>
     </form>
