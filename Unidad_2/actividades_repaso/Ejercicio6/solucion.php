@@ -49,6 +49,8 @@
         $_SESSION['nom_usuario'] = $nombre_usuario;
         $_SESSION['colores_hex'] = $paleta_seleccionada;
 
+        // Inicializamos las variables de sesión "jugada" y "pulsaciones" aquí 
+        // para que el reset de cada partida sea efectivo y no genere problemas con la partida
         $_SESSION['jugada'] = array();
         $_SESSION['pulsaciones'] = 0;
     }

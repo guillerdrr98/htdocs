@@ -33,12 +33,7 @@
             if (isset($jugada[$i])) {
                 $nombre_color = $jugada[$i];
                 $posicion = array_search($nombre_color, $paleta_texto); //array_search() devuelve el índice del elemento en caso de que exista, false en caso contrario
-
-                if ($posicion !== false) {
-                    $colores_a_pintar[] = $paleta_hex[$posicion];
-                } else {
-                    $colores_a_pintar[] = "#000000";
-                }
+                $colores_a_pintar[] = $paleta_hex[$posicion];
             } else {
                 // Si aún no se ha pulsado, colocamos el círculo en negro
                 $colores_a_pintar[] = "#000000";
