@@ -60,6 +60,7 @@
         <!-- Imprimimos $jugada_actual para que se vean los círculos pintados -->
         <?= $jugada_actual ?>
 
+        <!-- Metemos los botones en un form para procesar las pulsaciones y el color pulsado -->
         <form method="POST">
             <?php
                 for ($i = 0; $i < $num_colores; $i++) {
