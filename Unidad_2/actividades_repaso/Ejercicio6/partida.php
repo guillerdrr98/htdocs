@@ -38,7 +38,8 @@
         if ($jugada === $solucion_texto) {
             $mensaje_resultado = "<h3 style='color: green;'>¡Enhorabuena! Has ganado</h3>";
         } else {
-            $mensaje_resultado = "<h3 style='color: red;'>¡Has perdido! La combinación no es correcta.</h3>";
+            $mensaje_resultado = "<h3 style='color: red;'>¡Has perdido! La combinación no es correcta.</h3>
+            <p><strong>Solución correcta: </strong>" . implode(", ", $solucion_texto) . "</p>";
         }
     }
 
@@ -74,7 +75,6 @@
     <?php
         if ($juego_finalizado) {
             echo $mensaje_resultado;
-            echo "<p><strong>Solución correcta: </strong>" . implode(", ", $solucion_texto) . "</p>";
             echo '<a href="index.php"><button>Jugar otra vez</button></a>';
         }
     ?>
