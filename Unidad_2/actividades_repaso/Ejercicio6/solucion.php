@@ -48,18 +48,7 @@
         $_SESSION['num_circulos'] = $num_circulos;
         $_SESSION['nom_usuario'] = $nombre_usuario;
         $_SESSION['colores_hex'] = $paleta_seleccionada;
-
-        // Inicializamos las variables de sesión "jugada" y "pulsaciones" aquí 
-        // para que el reset de cada partida sea efectivo y no genere problemas con la partida
-        $_SESSION['jugada'] = array();
-        $_SESSION['pulsaciones'] = 0;
     }
-
-    // Accedemos a los valores de las variables de sesión para su posterior uso
-    $combinacion_sesion = $_SESSION['combinacion_colores_texto'];
-    $solucion_final = $_SESSION['solucion'];
-    $colores_dispo_texto = $_SESSION['paleta_texto'];
-    $nombre = $_SESSION['nom_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -69,20 +58,20 @@
     <title>Simón dice... - Solución</title>
 </head>
 <body>
-    <h2>¡Hola, <?= $nombre ?>! Simón dice...:</h2>
+    <h2>¡Hola, <?= $_SESSION['nom_usuario'] ?>! Simón dice...:</h2>
 
     <p><strong>Paleta de colores disponible:</strong> 
-        <?= implode(", ", $colores_dispo_texto) ?>
+        <?= implode(", ", $_SESSION['paleta_texto']) ?>
     </p>
 
     <h3>Combinación de colores generada:</h3>
     <div>
-        <?= $solucion_final ?>
+        <?= $_SESSION['solucion'] ?>
     </div>
 
     <h3>Combinación de colores generada en texto plano:</h3>
     <div>
-        <p><?= implode(" - ", $combinacion_sesion) ?></p>
+        <p><?= implode(" - ", $_SESSION['combinacion_colores_texto']) ?></p>
     </div>
 
     <br>
