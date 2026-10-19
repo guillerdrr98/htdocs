@@ -24,9 +24,9 @@
 
         // Generar la combinación secreta aleatoria
         for ($i = 0; $i < $num_circulos; $i++) {
-            $azar_key = $claves_paleta[rand(0, count($claves_paleta) - 1)];
-            $lista_nombres_solucion[] = $azar_key;
-            $lista_solucion[] = $paleta[$azar_key];
+            $valor_azar = $claves_paleta[rand(0, count($claves_paleta) - 1)];
+            $lista_nombres_solucion[] = $valor_azar;
+            $lista_solucion[] = $paleta[$valor_azar];
         }
 
         // Guardar en sesión
