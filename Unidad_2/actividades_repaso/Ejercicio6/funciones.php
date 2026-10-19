@@ -29,7 +29,7 @@
         $colores_a_pintar = [];
 
         for ($i = 0; $i < $total_circulos; $i++) {
-            $colores_a_pintar[] = (isset($jugada[$i]) && isset($paleta[$jugada[$i]])) ? $paleta[$jugada[$i]] : "#000000";
+            $colores_a_pintar[] = (isset($jugada[$i])) ? $paleta[$jugada[$i]] : "#000000";
         }
 
         return pintar_circulos($colores_a_pintar);
