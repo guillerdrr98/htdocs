@@ -11,6 +11,18 @@
         'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
         'samesite' => 'Lax' // Protección Anti-CSRF
     ]);
+
+    $nombreCookie2 = 'cookie_fondo';
+    $valorCookie2 = 'red';
+    $tiempoExpiracion2 = time() + (86400 * 30); // 30 días de duración
+    setcookie($nombreCookie2, $valorCookie2, [
+        'expires' => $tiempoExpiracion2,
+        'path' => '/',
+        'domain' => 'localhost',
+        'secure' => false, // Poner true en producción con HTTPS
+        'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
+        'samesite' => 'Lax' // Protección Anti-CSRF
+    ]);
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +42,9 @@
 
         <label for="num_colores">Número de colores a usar (entre 2 y 8):</label>
         <input type="number" id="num_colores" name="num_colores" value="4" min="2" max="8" required><br><br>
+
+        <label for="num_colores">Color de fondo:</label>
+        <input type="text" id="color_fondo" name="color_fondo" value=<?=$_COOKIE['cookie_fondo']?> ><br><br>
 
         <button type="submit">Siguiente</button>
     </form>

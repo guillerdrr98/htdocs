@@ -42,7 +42,7 @@
     <meta charset="UTF-8">
     <title>Simón dice... - Partida</title>
 </head>
-<body>
+<body style='background-color: <?=$_COOKIE['cookie_fondo']?>'>
     <h2>Progreso de la partida (Pulsación <?= $pulsaciones ?> de <?= $numero_circulos ?>):</h2>
 
     <div>
