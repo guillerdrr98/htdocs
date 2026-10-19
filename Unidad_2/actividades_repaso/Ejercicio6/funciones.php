@@ -24,23 +24,17 @@
         return $svg;
     }
 
-    // Función para generar el SVG de las jugadas del Simón
-    function actualizar_juego(array $jugada, int $total_circulos, array $paleta_texto, array $paleta_hex): string {
+    // Prepara el array de colores según el avance y delega el dibujo
+    function actualizar_juego(array $jugada, int $total_circulos, array $paleta): string {
         $colores_a_pintar = [];
 
         for ($i = 0; $i < $total_circulos; $i++) {
-            // Si la posición $i ya fue jugada, traducimos el nombre de color a su Hex
-            if (isset($jugada[$i])) {
-                $nombre_color = $jugada[$i];
-                $posicion = array_search($nombre_color, $paleta_texto); //array_search() devuelve el índice del elemento en caso de que exista, false en caso contrario
-                $colores_a_pintar[] = $paleta_hex[$posicion];
-            } else {
-                // Si aún no se ha pulsado, colocamos el círculo en negro
-                $colores_a_pintar[] = "#000000";
-            }
+            // isset() comprueba si la posición $i existe sin generar errores ni warnings
+            $colores_a_pintar[] = (isset($jugada[$i]) && isset($paleta[$jugada[$i]])) 
+                ? $paleta[$jugada[$i]] 
+                : "#000000";
         }
 
-        // Delegamos la generación del SVG a pintar_circulos()
         return pintar_circulos($colores_a_pintar);
     }
 ?>

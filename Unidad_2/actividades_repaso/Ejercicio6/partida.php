@@ -2,48 +2,40 @@
     session_start();
     require 'funciones.php';
 
-    $num_colores = count($_SESSION['paleta_texto']);
+    $numero_circulos = $_SESSION['num_circulos'];
+    $paleta = $_SESSION['paleta'];
+    $solucion_texto = $_SESSION['combinacion_colores_texto'];
+
     $juego_finalizado = false;
     $mensaje_resultado = "";
 
-
-    // Procesar la pulsación del botón
+    // Procesar pulsación de botón
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['color_elegido'])) {
-        if ($_SESSION['pulsaciones'] < $_SESSION['num_circulos']) {
-            $color_seleccionado = $_POST['color_elegido'];
-        
-            // Guardar jugada e incrementar contador
-            $_SESSION['jugada'][] = $color_seleccionado;
+        if (($_SESSION['pulsaciones']) < $numero_circulos) {
+            $_SESSION['jugada'][] = $_POST['color_elegido'];
             $_SESSION['pulsaciones']++;
         }
     }else{
-        $_SESSION['jugada'] = array();
+        $_SESSION['jugada'] = [];
         $_SESSION['pulsaciones'] = 0;
     }
 
-    // Se recogen los valores de las variables de sesión "jugada" y "pulsaciones"
-    // en este punto en lugar de al principio como el resto de variables debido
-    // a que el tratamiento de estos ocurre en el bloque anterior
     $jugada = $_SESSION['jugada'];
     $pulsaciones = $_SESSION['pulsaciones'];
 
-    // Comprobar si se ha alcanzado el número total de círculos
-    if ($pulsaciones === $_SESSION['num_circulos']) {
+    // Comprobar fin de partida
+    if ($pulsaciones === $numero_circulos) {
         $juego_finalizado = true;
-    
-        // Comparación estricta de ambos arrays (mismos colores y mismo orden)
-        if ($jugada === $_SESSION['combinacion_colores_texto']) {
+        if ($jugada === $solucion_texto) {
             $mensaje_resultado = "<h3 style='color: green;'>¡Enhorabuena! Has ganado</h3>";
         } else {
-            $mensaje_resultado = "<h3 style='color: red;'>¡Has perdido! La combinación no es correcta.</h3>
-            <p><strong>Solución correcta: </strong>" . implode(", ", $_SESSION['combinacion_colores_texto']) . "</p>";
+            $mensaje_resultado = "<h3 style='color: red;'>¡Has perdido! La combinación no es correcta.</h3>" .
+            "<p><strong>Solución correcta: </strong>" . implode(", ", $solucion_texto) . "</p>";
         }
     }
 
-    // Generar el SVG dinámico según las jugadas registradas hasta el momento
-    $jugada_actual = actualizar_juego($jugada, $_SESSION['num_circulos'], $_SESSION['paleta_texto'], $_SESSION['colores_hex']);
+    $svg_actual = actualizar_juego($jugada, $numero_circulos, $paleta);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,30 +43,25 @@
     <title>Simón dice... - Partida</title>
 </head>
 <body>
-    <h2>Progreso de la partida (Pulsación <?= $_SESSION['pulsaciones'] ?> de <?= $_SESSION['num_circulos'] ?>):</h2>
+    <h2>Progreso de la partida (Pulsación <?= $pulsaciones ?> de <?= $numero_circulos ?>):</h2>
 
     <div>
-        <!-- Imprimimos $jugada_actual para que se vean los círculos pintados -->
-        <?= $jugada_actual ?>
+        <?= $svg_actual ?>
 
-        <!-- Metemos los botones en un form para procesar las pulsaciones y el color pulsado -->
         <form method="POST">
             <?php
-                for ($i = 0; $i < $num_colores; $i++) {
-                    // Desactivar botones si la partida ya ha finalizado
+                foreach ($paleta as $texto => $hex) {
                     $disabled = $juego_finalizado ? 'disabled' : '';
-                    echo '<button name="color_elegido" value="' . $_SESSION['paleta_texto'][$i] . '" style="background-color: ' . $_SESSION['colores_hex'][$i] . ';
-                    color: black; margin: 5px;" type="submit" ' . $disabled . '>'. $_SESSION['paleta_texto'][$i]. '</button>';
+                    echo '<button name="color_elegido" value="' . $texto . '" style="background-color: ' . $hex . '; color: black; margin: 5px; padding: 8px 14px; cursor: pointer;" type="submit" ' . $disabled . '>' . ucfirst($texto) . '</button>';
                 }
             ?>
         </form>
     </div>
 
-    <?php
-        if ($juego_finalizado) {
-            echo $mensaje_resultado;
-            echo '<a href="index.php"><button>Jugar otra vez</button></a>';
-        }
-    ?>
+    <?php if ($juego_finalizado): ?>
+        <br>
+        <?= $mensaje_resultado ?>
+        <a href="index.php"><button>Jugar otra vez</button></a>
+    <?php endif; ?>
 </body>
 </html>
