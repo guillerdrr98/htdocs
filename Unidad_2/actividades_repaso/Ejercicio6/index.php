@@ -1,9 +1,8 @@
 <?php
     // DECLARACIÓN COOKIE DE PRUEBA (EN LUGAR DE FIJAR UN VALOR A MANO PARA LOS CÍRCULOS, CREAREMOS UNA COOKIE CON EL VALOR QUE QUERAMOS)
-    $nombreCookie = 'cookie_circulos';
     $valorCookie = '7';
     $tiempoExpiracion = time() + (86400 * 30); // 30 días de duración
-    setcookie($nombreCookie, $valorCookie, [
+    setcookie('cookie_circulos', $valorCookie, [
         'expires' => $tiempoExpiracion,
         'path' => '/',
         'domain' => 'localhost',
@@ -12,10 +11,9 @@
         'samesite' => 'Lax' // Protección Anti-CSRF
     ]);
 
-    $nombreCookie2 = 'cookie_fondo';
-    $valorCookie2 = 'red';
+    $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $tiempoExpiracion2 = time() + (86400 * 30); // 30 días de duración
-    setcookie($nombreCookie2, $valorCookie2, [
+    setcookie('cookie_fondo', $_POST['color_fondo'], [
         'expires' => $tiempoExpiracion2,
         'path' => '/',
         'domain' => 'localhost',
@@ -43,8 +41,8 @@
         <label for="num_colores">Número de colores a usar (entre 2 y 8):</label>
         <input type="number" id="num_colores" name="num_colores" value="4" min="2" max="8" required><br><br>
 
-        <label for="num_colores">Color de fondo:</label>
-        <input type="text" id="color_fondo" name="color_fondo" value=<?=$_COOKIE['cookie_fondo']?> ><br><br>
+        <label for="color_fondo">Color de fondo:</label>
+        <input type="text" id="color_fondo" name="color_fondo" value=<?=$color_form?> ><br><br>
 
         <button type="submit">Siguiente</button>
     </form>
