@@ -29,7 +29,7 @@
         $colores_a_pintar = [];
 
         for ($i = 0; $i < $total_circulos; $i++) {
-            // isset() comprueba si la posición $i existe sin generar errores ni warnings
+            
             $colores_a_pintar[] = (isset($jugada[$i]) && isset($paleta[$jugada[$i]])) 
                 ? $paleta[$jugada[$i]] 
                 : "#000000";
