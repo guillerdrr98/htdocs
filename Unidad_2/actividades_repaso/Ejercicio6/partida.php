@@ -53,7 +53,7 @@
                 foreach ($paleta as $texto => $hex) {
                     $disabled = $juego_finalizado ? 'disabled' : '';
                     echo '<button name="color_elegido" value="' . $texto . '" style="background-color: ' . $hex . '; 
-                    color: black; margin: 5px; padding: 8px 14px; cursor: pointer;" type="submit" ' . $disabled . '>' . $texto . '</button>';
+                    color: black; margin: 5px;" type="submit" ' . $disabled . '>' . $texto . '</button>';
                 }
             ?>
         </form>
