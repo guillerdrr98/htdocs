@@ -34,7 +34,7 @@
         }
     }
 
-    $svg_actual = actualizar_juego($jugada, $numero_circulos, $paleta);
+    $comb_actual = actualizar_juego($jugada, $numero_circulos, $paleta);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,7 +46,7 @@
     <h2>Progreso de la partida (Pulsación <?= $pulsaciones ?> de <?= $numero_circulos ?>):</h2>
 
     <div>
-        <?= $svg_actual ?>
+        <?= $comb_actual ?>
 
         <form method="POST">
             <?php
