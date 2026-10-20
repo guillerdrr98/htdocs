@@ -11,6 +11,21 @@
     ];
 
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['num_colores'])) {
+
+        // CREAMOS LAS COOKIES EN SOLUCION.PHP PORQUE ES LA PÁGINA HACIA LA QUE INDEX MANDA LOS DATOS
+        if (isset($_POST['color_fondo'])) {
+            $color_fondo = $_POST['color_fondo'];
+            setcookie('cookie_fondo', $color_fondo, ['expires' => time() + (86400 * 30)]);
+        }
+
+        if (isset($_POST['num_circulos'])) {
+            setcookie('cookie_circulos', $_POST['num_circulos'], ['expires' => time() + (86400 * 30)]);
+        }
+
+        // Guardamos el fondo en sesión para que lo lean las demás páginas
+        $fondo = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
+        $_SESSION['fondo_cookie'] = $fondo;
+
         $nombre_usuario = $_POST['nom_usuario'];
         $num_circulos = (int)$_POST['num_circulos'];
         $num_colores = (int)$_POST['num_colores'];
@@ -44,7 +59,7 @@
     <meta charset="UTF-8">
     <title>Simón dice... - Solución</title>
 </head>
-<body>
+<body style = 'background-color: <?=$fondo?>'>
     <h2>¡Hola, <?= $_SESSION['nom_usuario'] ?>! Simón dice...:</h2>
 
     <p><strong>Paleta de colores disponible:</strong> <?= implode(", ", array_keys($_SESSION['paleta'])) ?></p>

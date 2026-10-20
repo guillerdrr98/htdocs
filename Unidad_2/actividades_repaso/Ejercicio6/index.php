@@ -1,26 +1,9 @@
 <?php
-    // DECLARACIÓN COOKIE DE PRUEBA (EN LUGAR DE FIJAR UN VALOR A MANO PARA LOS CÍRCULOS, CREAREMOS UNA COOKIE CON EL VALOR QUE QUERAMOS)
-    $valorCookie = '7';
-    $tiempoExpiracion = time() + (86400 * 30); // 30 días de duración
-    setcookie('cookie_circulos', $valorCookie, [
-        'expires' => $tiempoExpiracion,
-        'path' => '/',
-        'domain' => 'localhost',
-        'secure' => false, // Poner true en producción con HTTPS
-        'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
-        'samesite' => 'Lax' // Protección Anti-CSRF
-    ]);
+    session_start();
 
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
-    $tiempoExpiracion2 = time() + (86400 * 30); // 30 días de duración
-    setcookie('cookie_fondo', $_POST['color_fondo'], [
-        'expires' => $tiempoExpiracion2,
-        'path' => '/',
-        'domain' => 'localhost',
-        'secure' => false, // Poner true en producción con HTTPS
-        'httponly' => true, // Inaccesible desde JavaScript (Protección Anti-XSS)
-        'samesite' => 'Lax' // Protección Anti-CSRF
-    ]);
+    $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
+    
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +19,7 @@
         <input type="text" id="nom_usuario" name="nom_usuario" required><br><br>
 
         <label for="num_circulos">Número de círculos (entre 4 y 8):</label>
-        <input type="number" id="num_circulos" name="num_circulos" value=<?=$_COOKIE['cookie_circulos']?> min="4" max="8" required><br><br>
+        <input type="number" id="num_circulos" name="num_circulos" value=<?=$num_cir_cookie?> min="4" max="8" required><br><br>
 
         <label for="num_colores">Número de colores a usar (entre 2 y 8):</label>
         <input type="number" id="num_colores" name="num_colores" value="4" min="2" max="8" required><br><br>

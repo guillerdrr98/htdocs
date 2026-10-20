@@ -5,6 +5,7 @@
     $numero_circulos = $_SESSION['num_circulos'];
     $paleta = $_SESSION['paleta'];
     $solucion_texto = $_SESSION['combinacion_colores_texto'];
+    $fondo_actual = $_SESSION['fondo_cookie'];
 
     $juego_finalizado = false;
     $mensaje_resultado = "";
@@ -42,7 +43,7 @@
     <meta charset="UTF-8">
     <title>Simón dice... - Partida</title>
 </head>
-<body style='background-color: <?=$_COOKIE['cookie_fondo']?>'>
+<body style = 'background-color: <?=$fondo_actual?>'>
     <h2>Progreso de la partida (Pulsación <?= $pulsaciones ?> de <?= $numero_circulos ?>):</h2>
 
     <div>
