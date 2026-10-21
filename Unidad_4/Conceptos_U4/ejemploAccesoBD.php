@@ -17,6 +17,7 @@
         echo "[ERROR CONEXIÓN]: Ha habido un error al conectarse a la base de datos.";
     }
 
+    // Consulta SELECT de prueba mapeando a la BBDD agenda
     $sql = "SELECT * FROM usuarios";
     $stmt = $pdo -> prepare($sql);
 ?>
