@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
@@ -12,7 +11,7 @@
     <meta charset="UTF-8">
     <title>Simón dice... - Configuración</title>
 </head>
-<body>
+<body style='background-color: <?=$color_form?>'>
     <h2>Configuración Simón dice...</h2>
     <form action="solucion.php" method="POST">
         <label for="nom_usuario">Nombre:</label>
