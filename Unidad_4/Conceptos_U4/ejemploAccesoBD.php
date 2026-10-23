@@ -13,7 +13,7 @@
         $stmt = $pdo -> prepare($sql);
 
         // Ejecutar la sentencia
-        $stmt->execute();
+        $stmt -> execute();
         echo "<br>";
 
         // Obtener los resultados en un array asociativo
@@ -26,7 +26,7 @@
             echo "Codigo: {$codigo} | Nombre: $nombre | Clave: $clave | Rol: $rol <br>";
         }
     }catch(PDOException $e){
-        error_log("Error en SELECT: " . $e->getMessage());
+        error_log("Error en SELECT: " . $e -> getMessage());
         echo "No se pudieron obtener los usuarios.";
     }finally{
         cierreConexion($stmt, $pdo);
