@@ -1,11 +1,5 @@
 <?php
-    require 'conexion.php';
-    require 'cierre.php';
-    // Declaración de parámetros para acceder a la BBDD
-    $pdo = "";
-    $dsn = "";
-
-    crearConexion($dsn, $pdo);
+    require_once 'conexion.php';
 
     try{
         // Consulta SELECT de prueba mapeando a la BBDD agenda
@@ -29,7 +23,7 @@
         error_log("Error en SELECT: " . $e -> getMessage());
         echo "No se pudieron obtener los usuarios.";
     }finally{
-        cierreConexion($stmt, $pdo);
+        require_once 'cierre.php';
     }
     
 ?>
