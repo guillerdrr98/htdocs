@@ -14,8 +14,6 @@
 <body style='background-color: <?=$color_form?>'>
     <h2>Configuración Simón dice...</h2>
     <form action="solucion.php" method="POST">
-        <label for="nom_usuario">Nombre:</label>
-        <input type="text" id="nom_usuario" name="nom_usuario" required><br><br>
 
         <label for="num_circulos">Número de círculos (entre 4 y 8):</label>
         <input type="number" id="num_circulos" name="num_circulos" value=<?=$num_cir_cookie?> min="4" max="8" required><br><br>
