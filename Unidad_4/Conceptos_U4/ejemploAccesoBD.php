@@ -20,4 +20,17 @@
     // Consulta SELECT de prueba mapeando a la BBDD agenda
     $sql = "SELECT * FROM usuarios";
     $stmt = $pdo -> prepare($sql);
+
+    // Ejecutar la sentencia
+    $stmt->execute();
+
+    // Obtener los resultados en un array asociativo
+    $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo "<br>";
+
+    // Imprimir el resultado para verificarlo
+    foreach ($usuarios as $usuario) {
+    echo "Codigo: " . $usuario['Codigo'] . " - Nombre: " . $usuario['Nombre'] . 
+    " - Clave: " . $usuario['Clave'] . " - Rol: " . $usuario['Rol'] . "<br>";
+}
 ?>
