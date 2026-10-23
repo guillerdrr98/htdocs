@@ -3,7 +3,7 @@
 
     $codigoNuevo = 5;
     $nombreNuevo = 'pepito';
-    $claveNuva = 'pepito';
+    $claveNueva = 'pepito';
     $rolNuevo = 0;
 
     try{
