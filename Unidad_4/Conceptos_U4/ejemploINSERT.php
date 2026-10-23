@@ -8,7 +8,7 @@
 
     try{
         // Consulta SELECT de prueba mapeando a la BBDD agenda
-        $sql = "INSERT INTO usuario (codigo, nombre, clave, rol) VALUES (:cod, :nom, :cla, :rol)";
+        $sql = "INSERT INTO usuarios (Codigo, Nombre, Clave, Rol) VALUES (:cod, :nom, :cla, :rol)";
         $stmt = $pdo -> prepare($sql);
 
         // Ejecutar la sentencia
