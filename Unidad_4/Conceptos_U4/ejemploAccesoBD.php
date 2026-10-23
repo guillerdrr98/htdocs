@@ -17,20 +17,30 @@
         echo "[ERROR CONEXIÓN]: Ha habido un error al conectarse a la base de datos.";
     }
 
-    // Consulta SELECT de prueba mapeando a la BBDD agenda
-    $sql = "SELECT * FROM usuarios";
-    $stmt = $pdo -> prepare($sql);
+    try{
+        // Consulta SELECT de prueba mapeando a la BBDD agenda
+        $sql = "SELECT * FROM usuarios";
+        $stmt = $pdo -> prepare($sql);
 
-    // Ejecutar la sentencia
-    $stmt->execute();
+        // Ejecutar la sentencia
+        $stmt->execute();
+        echo "<br>";
 
-    // Obtener los resultados en un array asociativo
-    $usuarios = $stmt -> fetchAll($pdo::FETCH_ASSOC);
-    echo "<br>";
-
-    // Imprimir el resultado para verificarlo
-    foreach ($usuarios as $usuario) {
-    echo "Codigo: " . $usuario['Codigo'] . " - Nombre: " . $usuario['Nombre'] . 
-    " - Clave: " . $usuario['Clave'] . " - Rol: " . $usuario['Rol'] . "<br>";
-}
+        // Obtener los resultados en un array asociativo
+        while ($fila = $stmt->fetch()) {
+            // htmlspecialchars evita inyecciones de código HTML/JavaScript (XSS)
+            $codigo = htmlspecialchars($fila['Codigo']);
+            $nombre = htmlspecialchars($fila['Nombre']);
+            $clave = htmlspecialchars($fila['Clave']);
+            $rol = htmlspecialchars($fila['Rol']);
+            echo "Codigo: {$codigo} | Nombre: $nombre | Clave: $clave | Rol: $rol <br>";
+        }
+    }catch(PDOException $e){
+        error_log("Error en SELECT: " . $e->getMessage());
+        echo "No se pudieron obtener los alumnos.";
+    }finally{
+        $stmt = null; // Liberamos el cursor
+        $pdo = null; // Cerramos la conexión
+    }
+    
 ?>
