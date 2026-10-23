@@ -26,7 +26,6 @@
         $fondo = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
         $_SESSION['fondo_cookie'] = $fondo;
 
-        $nombre_usuario = $_POST['nom_usuario'];
         $num_circulos = (int)$_POST['num_circulos'];
         $num_colores = (int)$_POST['num_colores'];
 
@@ -45,7 +44,6 @@
         }
 
         // Guardar en sesión
-        $_SESSION['nom_usuario'] = $nombre_usuario;
         $_SESSION['num_colores'] = $num_colores;
         $_SESSION['num_circulos'] = $num_circulos;
         $_SESSION['paleta'] = $paleta;
