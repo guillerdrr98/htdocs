@@ -1,21 +1,11 @@
 <?php
+    require 'conexion.php';
+    require 'cierre.php';
     // Declaración de parámetros para acceder a la BBDD
-    $host = 'localhost';
-    $dbname = 'agenda';
-    $user = 'root';
-    $password= '';
+    $pdo = "";
+    $dsn = "";
 
-    //Construccion del DSN (Data Source Name)
-    $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
-
-    try{
-        $pdo = new PDO($dsn, $user, $password);
-        echo "Conexión establecida con éxito a la base de datos '$dbname'.";
-    }catch(PDOException $e){
-        // En producción NUNCA debemos mostrar e.getMessage() directamente 
-        // al usuario final por SEGURIDAD
-        echo "[ERROR CONEXIÓN]: Ha habido un error al conectarse a la base de datos.";
-    }
+    crearConexion($dsn, $pdo);
 
     try{
         // Consulta SELECT de prueba mapeando a la BBDD agenda
@@ -37,10 +27,9 @@
         }
     }catch(PDOException $e){
         error_log("Error en SELECT: " . $e->getMessage());
-        echo "No se pudieron obtener los alumnos.";
+        echo "No se pudieron obtener los usuarios.";
     }finally{
-        $stmt = null; // Liberamos el cursor
-        $pdo = null; // Cerramos la conexión
+        cierreConexion($stmt, $pdo);
     }
     
 ?>
