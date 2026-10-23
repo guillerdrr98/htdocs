@@ -25,7 +25,7 @@
     $stmt->execute();
 
     // Obtener los resultados en un array asociativo
-    $usuarios = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    $usuarios = $stmt -> fetchAll($pdo::FETCH_ASSOC);
     echo "<br>";
 
     // Imprimir el resultado para verificarlo
