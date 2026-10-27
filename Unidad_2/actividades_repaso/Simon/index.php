@@ -3,7 +3,6 @@
     require_once './ConexionBD/funcionesBusqueda.php';
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)){
         $usu = $_POST['nom_usuario'];
-        $cont = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         verificarUsuPass($usu, $cont);
     }
 ?>
