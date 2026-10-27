@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
     
