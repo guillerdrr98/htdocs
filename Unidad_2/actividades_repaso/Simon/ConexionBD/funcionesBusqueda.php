@@ -21,8 +21,8 @@
                 exit();
             }
         }catch(PDOException $e){
-            echo "Error en QUERY: " . $e -> getMessage();
-            echo "No se pudieron obtener los datos.";
+            error_log("Error en SELECT: " . $e -> getMessage());
+            echo "No se pudo verificar el usuario.";
         }finally{
             require_once 'cierre.php';
         }
@@ -41,8 +41,8 @@
             return $stmt->fetchColumn() > 0;
 
         }catch(PDOException $e){
-            echo "Error en QUERY de comprobación: " . $e -> getMessage();
-            echo "No se pudieron obtener los datos.";
+            error_log("Error en SELECT: " . $e -> getMessage());
+            echo "No se pudo realizar la comprobación.";
         }finally{
             require_once 'cierre.php';
         }
@@ -65,9 +65,8 @@
         return true; 
 
     }catch(PDOException $e){
-        echo "<h3>ERROR DE MYSQL AL INSERTAR:</h3>";
-        echo "<p style='color: red;'>" . $e->getMessage() . "</p>";
-        exit();
+        error_log("Error en INSERT: " . $e -> getMessage());
+        echo "Error al insertar los datos.";
     }finally{
         require_once 'cierre.php';
     }
