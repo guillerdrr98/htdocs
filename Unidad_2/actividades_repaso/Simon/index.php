@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon dice... - Inicio de sesión</title>
+    <title>Simón dice... - Inicio de sesión</title>
 </head>
 <body>
     <h1>Inicio de Sesión</h1>
