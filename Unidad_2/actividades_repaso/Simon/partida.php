@@ -63,7 +63,7 @@
     <?php if ($juego_finalizado): ?>
         <br>
         <?= $mensaje_resultado ?>
-        <a href="index.php"><button>Jugar otra vez</button></a>
+        <a href="config.php"><button>Jugar otra vez</button></a>
     <?php endif; ?>
 </body>
 </html>
