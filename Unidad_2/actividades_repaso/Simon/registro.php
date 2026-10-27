@@ -6,14 +6,14 @@
         $usu = $_POST['usuario'];
         $pass = $_POST['pass'];
 
-        // 1. Comprobamos si el usuario ya existe
+        // Comprobamos si el usuario ya existe
         if (existeUsuario($usu)) {
             // Si existe, redirigimos de vuelta al registro con un error específico (?error=1)
             header("Location: registro.php?error=1");
             exit();
         } else {
-            // 2. Si no existe, procedemos a insertarlo
-            if (insertarUsuario($usu, $pass)) {
+            // Si no existe, procedemos a insertarlo
+            if (insertarUsuario($usu, password_hash($pass, PASSWORD_DEFAULT))) {
                 header("Location: index.php");
                 exit();
             } else {

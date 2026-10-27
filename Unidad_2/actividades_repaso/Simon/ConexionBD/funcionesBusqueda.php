@@ -11,7 +11,7 @@
 
             $usuarioBD = $stmt -> fetch();
 
-            if($usuarioBD && password_verify($usuarioBD['Clave'], $pass)){
+            if($usuarioBD && password_verify($pass, $usuarioBD['Clave'])){
                 $_SESSION['nom_usuario'] = $usuarioBD['Nombre'];
                 $_SESSION['rol'] = $usuarioBD['Rol'];
                 header("Location: config.php");
