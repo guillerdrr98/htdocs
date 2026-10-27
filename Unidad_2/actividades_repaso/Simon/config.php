@@ -12,7 +12,7 @@
     <title>Simón dice... - Configuración</title>
 </head>
 <body style='background-color: <?=$color_form?>'>
-    <h2>Configuración Simón dice...</h2>
+    <h2>¡Hola, <?= $_SESSION['nom_usuario'] ?>! Configura tu partida:</h2>
     <form action="solucion.php" method="POST">
 
         <label for="num_circulos">Número de círculos (entre 4 y 8):</label>
