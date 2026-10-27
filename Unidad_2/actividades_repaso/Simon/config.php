@@ -24,6 +24,7 @@
         <label for="color_fondo">Color de fondo:</label>
         <input type="text" id="color_fondo" name="color_fondo" value=<?=$color_form?> ><br><br>
 
+        <a href="index.php"><button>Volver al formulario</button></a>
         <button type="submit">Siguiente</button>
     </form>
 </body>

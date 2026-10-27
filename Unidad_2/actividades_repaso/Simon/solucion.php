@@ -69,7 +69,7 @@
     <p><?= implode(" - ", $_SESSION['combinacion_colores_texto']) ?></p>
 
     <br>
-    <a href="index.php"><button>Volver al formulario</button></a>
+    <a href="config.php"><button>Volver a configuración</button></a>
     <a href="partida.php"><button>Empezar Partida</button></a>
 </body>
 </html>
