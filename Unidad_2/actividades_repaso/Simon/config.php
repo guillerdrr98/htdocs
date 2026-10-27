@@ -23,9 +23,12 @@
 
         <label for="color_fondo">Color de fondo:</label>
         <input type="text" id="color_fondo" name="color_fondo" value=<?=$color_form?> ><br><br>
-
-        <a href="index.php"><button>Volver al formulario</button></a>
-        <button type="submit">Siguiente</button>
+        
+        <!-- Contenedor en línea para alinear ambos botones juntos -->
+        <div style="display: inline-flex; gap: 10px; align-items: center;">
+            <button type="submit">Siguiente</button>
+            <a href="index.php"><button type="button">Volver al inicio</button></a>
+        </div>
     </form>
 </body>
 </html>
