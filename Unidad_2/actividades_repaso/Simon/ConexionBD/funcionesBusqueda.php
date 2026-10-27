@@ -59,7 +59,7 @@
     
         $stmt->execute([
             ':nom' => $usuario,
-            ':clave' => $pass
+            ':clave' => $passHash
         ]);
 
         return true; 
