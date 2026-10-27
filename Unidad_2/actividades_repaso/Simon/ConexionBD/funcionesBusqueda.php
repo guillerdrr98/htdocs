@@ -65,8 +65,9 @@
         return true; 
 
     }catch(PDOException $e){
-        error_log("Error en QUERY inserción: " . $e->getMessage());
-        echo "Fallo al insertar usuario en la BD";
+        echo "<h3>ERROR DE MYSQL AL INSERTAR:</h3>";
+        echo "<p style='color: red;'>" . $e->getMessage() . "</p>";
+        exit();
     }finally{
         require_once 'cierre.php';
     }
