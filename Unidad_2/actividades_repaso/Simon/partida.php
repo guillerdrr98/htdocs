@@ -64,6 +64,7 @@
         <br>
         <?= $mensaje_resultado ?>
         <a href="config.php"><button>Jugar otra vez</button></a>
+        <a href="index.php"><button>Salir</button></a>
     <?php endif; ?>
 </body>
 </html>
