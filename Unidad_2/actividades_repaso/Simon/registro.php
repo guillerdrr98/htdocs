@@ -13,7 +13,7 @@
             exit();
         } else {
             // Si no existe, procedemos a insertarlo
-            if (insertarUsuario($usu, password_hash($pass, PASSWORD_DEFAULT))) {
+            if (insertarUsuario($usu, $pass)) {
                 header("Location: index.php");
                 exit();
             } else {

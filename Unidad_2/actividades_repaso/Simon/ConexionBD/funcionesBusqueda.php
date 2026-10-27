@@ -52,6 +52,8 @@
     require 'conexion.php';
 
     try{
+        $passHash = password_hash($pass, PASSWORD_DEFAULT);
+
         $sql = "INSERT INTO usuarios (Nombre, Clave, Rol) VALUES (:nom, :clave, 0)";
         $stmt = $pdo->prepare($sql);
     
