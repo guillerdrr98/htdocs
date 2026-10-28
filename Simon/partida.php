@@ -63,6 +63,7 @@
     <?php if ($juego_finalizado): ?>
         <br>
         <?= $mensaje_resultado ?>
+        <?= $_SESSION['solucion']?>
         <a href="config.php"><button>Jugar otra vez</button></a>
         <a href="index.php"><button>Salir</button></a>
     <?php endif; ?>
