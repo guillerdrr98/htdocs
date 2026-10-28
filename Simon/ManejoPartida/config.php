@@ -1,5 +1,12 @@
 <?php
     session_start();
+
+    // SEGURIDAD: Si no hay sesión iniciada O el rol no es 1 (admin), fuera de aquí
+    if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
+        header("Location: index.php");
+        exit();
+    }
+
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
     
