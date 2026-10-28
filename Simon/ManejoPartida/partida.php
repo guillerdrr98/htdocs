@@ -28,10 +28,9 @@
     if ($pulsaciones === $numero_circulos) {
         $juego_finalizado = true;
         if ($jugada === $solucion_texto) {
-            $mensaje_resultado = "<h3 style='color: green;'>¡Enhorabuena! Has ganado</h3>";
+            header("Location: ../PantallasFinal/acierto.php");
         } else {
-            $mensaje_resultado = "<h3 style='color: red;'>¡Has perdido! La combinación no es correcta.</h3>" .
-            "<p><strong>Solución correcta: </strong>" . implode(", ", $solucion_texto) . "</p>";
+            header("Location: ../PantallasFinal/fallo.php");
         }
     }
 
@@ -59,13 +58,5 @@
             ?>
         </form>
     </div>
-
-    <?php if ($juego_finalizado): ?>
-        <br>
-        <?= $mensaje_resultado ?>
-        <?= $_SESSION['solucion']?>
-        <a href="config.php"><button>Jugar otra vez</button></a>
-        <a href="index.php"><button>Salir</button></a>
-    <?php endif; ?>
 </body>
 </html>

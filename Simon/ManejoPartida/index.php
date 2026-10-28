@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once './ConexionBD/funcionesBusqueda.php';
+    require_once '../ConexionBD/funcionesBusqueda.php';
     $msgError = "";
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)){
