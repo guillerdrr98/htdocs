@@ -49,6 +49,7 @@
     // Guardar en sesión para que la partida pueda leerlo
     $_SESSION['num_colores'] = $num_colores;
     $_SESSION['num_circulos'] = $num_circulos;
+    $_SESSION['fondo'] = $color_form;
     $_SESSION['paleta'] = $paleta;
     $_SESSION['combinacion_colores_texto'] = $lista_nombres_solucion;
     $_SESSION['solucion'] = pintar_circulos($lista_solucion);

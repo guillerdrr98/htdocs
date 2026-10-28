@@ -11,10 +11,6 @@
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
     $num_colores_cookie = isset($_COOKIE['cookie_colores']) ? $_COOKIE['cookie_colores'] : '4';
-
-    $_SESSION['fondo'] = $color_form;
-    $_SESSION['num_circulos'] = $num_cir_cookie;
-    $_SESSION['num_colores'] = $num_colores_cookie;
 ?>
 
 <!DOCTYPE html>
