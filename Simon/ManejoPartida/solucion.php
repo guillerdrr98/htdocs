@@ -30,8 +30,6 @@
     $num_circulos = isset($_COOKIE['cookie_circulos']) ? (int)$_COOKIE['cookie_circulos'] : 7;
     $num_colores = isset($_COOKIE['cookie_colores']) ? (int)$_COOKIE['cookie_colores'] : 4;
 
-    $_SESSION['fondo'] = $color_form;
-
     // 4. GENERAR LA COMBINACIÓN SIEMPRE (tanto para admin como para usuarios tipo 0)
     $paleta = array_slice($colores, 0, $num_colores, true);
     $claves_paleta = array_keys($paleta);
