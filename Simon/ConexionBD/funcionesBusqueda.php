@@ -14,7 +14,12 @@
             if($usuarioBD && password_verify($pass, $usuarioBD['Clave'])){
                 $_SESSION['nom_usuario'] = $usuarioBD['Nombre'];
                 $_SESSION['rol'] = $usuarioBD['Rol'];
-                header("Location: config.php");
+
+                if ($_SESSION['rol'] == 1) {
+                    header("Location: config.php"); // Si es admin (tipo 1), va a la configuración
+                } else {
+                    header("Location: solucion.php"); // Si es usuario normal, va directo al juego
+                }
                 exit();
             } else {
                 return "Usuario y/o contraseña incorrectos.";
