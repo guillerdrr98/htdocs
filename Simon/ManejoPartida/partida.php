@@ -5,7 +5,7 @@
     $numero_circulos = $_SESSION['num_circulos'];
     $paleta = $_SESSION['paleta'];
     $solucion_texto = $_SESSION['combinacion_colores_texto'];
-    $fondo_actual = $_SESSION['cookie_fondo'];
+    $fondo_actual = $_SESSION['fondo'];
 
     $juego_finalizado = false;
     $mensaje_resultado = "";

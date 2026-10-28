@@ -14,17 +14,14 @@
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isset($_POST['color_fondo'])) {
             setcookie('cookie_fondo', $_POST['color_fondo'], ['expires' => time() + (86400 * 30)]);
-            $_COOKIE['cookie_fondo'] = $_POST['color_fondo']; // Actualizamos la superglobal para uso inmediato
         }
 
         if (isset($_POST['num_circulos'])) {
             setcookie('cookie_circulos', $_POST['num_circulos'], ['expires' => time() + (86400 * 30)]);
-            $_COOKIE['cookie_circulos'] = $_POST['num_circulos'];
         }
 
         if (isset($_POST['num_colores'])) {
             setcookie('cookie_colores', $_POST['num_colores'], ['expires' => time() + (86400 * 30)]);
-            $_COOKIE['cookie_colores'] = $_POST['num_colores'];
         }
     }
 
@@ -32,6 +29,8 @@
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_circulos = isset($_COOKIE['cookie_circulos']) ? (int)$_COOKIE['cookie_circulos'] : 7;
     $num_colores = isset($_COOKIE['cookie_colores']) ? (int)$_COOKIE['cookie_colores'] : 4;
+
+    $_SESSION['fondo'] = $color_form;
 
     // 4. GENERAR LA COMBINACIÓN SIEMPRE (tanto para admin como para usuarios tipo 0)
     $paleta = array_slice($colores, 0, $num_colores, true);
