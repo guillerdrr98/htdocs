@@ -1,15 +1,16 @@
 <?php
     session_start();
 
-    // SEGURIDAD: Si no hay sesión iniciada O el rol no es 1 (admin), fuera de aquí
+    // Seguridad: Solo el administrador (rol 1) puede acceder a esta página
     if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
         header("Location: index.php");
         exit();
     }
 
+    // Recuperamos todas las cookies para que los inputs recuerden los últimos valores guardados
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
-    
+    $num_colores_cookie = isset($_COOKIE['cookie_colores']) ? $_COOKIE['cookie_colores'] : '4';
 ?>
 
 <!DOCTYPE html>
@@ -18,20 +19,20 @@
     <meta charset="UTF-8">
     <title>Simón dice... - Configuración</title>
 </head>
-<body style='background-color: <?=$color_form?>'>
-    <h2>¡Hola, <?= $_SESSION['nom_usuario'] ?>! Configura tu partida:</h2>
+<body style="background-color: <?= $color_form ?>">
+    <h2>Configuración Simón dice...</h2>
+    
     <form action="solucion.php" method="POST">
-
         <label for="num_circulos">Número de círculos (entre 4 y 8):</label>
-        <input type="number" id="num_circulos" name="num_circulos" value=<?=$num_cir_cookie?> min="4" max="8" required><br><br>
+        <input type="number" id="num_circulos" name="num_circulos" value="<?= $num_cir_cookie ?>" min="4" max="8" required><br><br>
 
         <label for="num_colores">Número de colores a usar (entre 2 y 8):</label>
-        <input type="number" id="num_colores" name="num_colores" value="4" min="2" max="8" required><br><br>
+        <input type="number" id="num_colores" name="num_colores" value="<?= $num_colores_cookie ?>" min="2" max="8" required><br><br>
 
         <label for="color_fondo">Color de fondo:</label>
-        <input type="text" id="color_fondo" name="color_fondo" value=<?=$color_form?> ><br><br>
+        <input type="text" id="color_fondo" name="color_fondo" value="<?= $color_form ?>"><br><br>
         
-        <!-- Contenedor en línea para alinear ambos botones juntos -->
+        <!-- Botones alineados horizontalmente -->
         <div style="display: inline-flex; gap: 10px; align-items: center;">
             <a href="index.php"><button type="button">Volver al inicio</button></a>
             <button type="submit">Siguiente</button>
