@@ -10,18 +10,21 @@
         "morado" => "#7700ff", "gris" => "#858585"
     ];
 
-    // 2. Si viene por POST (el admin guardó la configuración en config.php), actualizamos las cookies
+    // 2. Si viene por POST desde config.php, actualizamos las cookies globalmente ('path' => '/')
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isset($_POST['color_fondo'])) {
-            setcookie('cookie_fondo', $_POST['color_fondo'], ['expires' => time() + (86400 * 30)]);
+            setcookie('cookie_fondo', $_POST['color_fondo'], ['expires' => time() + (86400 * 30), 'path' => '/']);
+            $_COOKIE['cookie_fondo'] = $_POST['color_fondo']; 
         }
 
         if (isset($_POST['num_circulos'])) {
-            setcookie('cookie_circulos', $_POST['num_circulos'], ['expires' => time() + (86400 * 30)]);
+            setcookie('cookie_circulos', $_POST['num_circulos'], ['expires' => time() + (86400 * 30), 'path' => '/']);
+            $_COOKIE['cookie_circulos'] = $_POST['num_circulos'];
         }
 
         if (isset($_POST['num_colores'])) {
-            setcookie('cookie_colores', $_POST['num_colores'], ['expires' => time() + (86400 * 30)]);
+            setcookie('cookie_colores', $_POST['num_colores'], ['expires' => time() + (86400 * 30), 'path' => '/']);
+            $_COOKIE['cookie_colores'] = $_POST['num_colores'];
         }
     }
 

@@ -7,20 +7,6 @@
         exit();
     }
 
-    // Si las cookies no existen todavía, las creamos con los valores por defecto (7 y 4)
-    if (!isset($_COOKIE['cookie_fondo'])) {
-        setcookie('cookie_fondo', 'grey', ['expires' => time() + (86400 * 30), 'path' => '/']);
-        $_COOKIE['cookie_fondo'] = 'grey';
-    }
-    if (!isset($_COOKIE['cookie_circulos'])) {
-        setcookie('cookie_circulos', '7', ['expires' => time() + (86400 * 30), 'path' => '/']);
-        $_COOKIE['cookie_circulos'] = '7';
-    }
-    if (!isset($_COOKIE['cookie_colores'])) {
-        setcookie('cookie_colores', '4', ['expires' => time() + (86400 * 30), 'path' => '/']);
-        $_COOKIE['cookie_colores'] = '4';
-    }
-
     // Recuperamos todas las cookies para que los inputs recuerden los últimos valores guardados
     $color_form = isset($_COOKIE['cookie_fondo']) ? $_COOKIE['cookie_fondo'] : 'grey';
     $num_cir_cookie = isset($_COOKIE['cookie_circulos']) ? $_COOKIE['cookie_circulos'] : '7';
