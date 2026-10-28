@@ -15,9 +15,8 @@
                 $_SESSION['nom_usuario'] = $usuarioBD['Nombre'];
                 $_SESSION['rol'] = $usuarioBD['Rol'];
                 header("Location: config.php");
-                exit(); // El éxito sí redirige porque avanzamos de página
+                exit();
             } else {
-                // Si falla, devolvemos el texto del error (no redirigimos)
                 return "Usuario y/o contraseña incorrectos.";
             }
         }catch(PDOException $e){
