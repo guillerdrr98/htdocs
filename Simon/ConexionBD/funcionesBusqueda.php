@@ -2,7 +2,7 @@
     function verificarUsuPass($usuario, $pass){
         require_once 'conexion.php';
         try{
-            $sql = "SELECT * FROM usuarios WHERE Nombre = :nom";
+            $sql = "SELECT * FROM usuarios WHERE BINARY Nombre = :nom";
             $stmt = $pdo -> prepare($sql);
 
             $stmt -> execute([
