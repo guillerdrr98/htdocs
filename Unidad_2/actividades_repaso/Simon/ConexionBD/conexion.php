@@ -2,7 +2,7 @@
     $dsn = "mysql:host=localhost;dbname=bdsimon;charset=utf8mb4";
     try{
         $pdo = new PDO($dsn, "root", "");
-        echo "Conexión establecida con éxito a la base de datos 'agenda'.";
+        //echo "Conexión establecida con éxito a la base de datos 'agenda'.";
     }catch(PDOException $e){
         // En producción NUNCA debemos mostrar e.getMessage() directamente 
         // al usuario final por SEGURIDAD

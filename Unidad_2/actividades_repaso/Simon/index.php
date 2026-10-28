@@ -1,10 +1,12 @@
 <?php
     session_start();
     require_once './ConexionBD/funcionesBusqueda.php';
+    $msgError = "";
+
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)){
         $usu = $_POST['nom_usuario'];
         $cont = $_POST['pass'];
-        verificarUsuPass($usu, $cont);
+        $msgError = verificarUsuPass($usu, $cont);
     }
 ?>
 
@@ -29,9 +31,10 @@
         <button type="submit">Entrar</button>
     </form>
 
-    <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+    <!-- MENSAJE DE ERROR DINÁMICO -->
+    <?php if ($msgError != ""): ?>
         <p style="color: red; font-weight: bold; margin-top: 15px;">
-            <?= "Usuario o contraseña incorrectos." ?>
+            <?= $msgError ?>
         </p>
     <?php endif; ?>
 </body>

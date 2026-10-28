@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once './ConexionBD/funcionesBusqueda.php';
+    $msgError = "";
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)) {
         $usu = $_POST['usuario'];
@@ -8,9 +9,7 @@
 
         // Comprobamos si el usuario ya existe
         if (existeUsuario($usu)) {
-            // Si existe, redirigimos de vuelta al registro con un error específico (?error=1)
-            header("Location: registro.php?error=1");
-            exit();
+            $msgError = "El nombre de usuario ya existe. Prueba con otro.";
         } else {
             // Si no existe, procedemos a insertarlo
             if (insertarUsuario($usu, $pass)) {
@@ -18,8 +17,7 @@
                 exit();
             } else {
                 // Error genérico de base de datos al insertar
-                header("Location: registro.php?error=2");
-                exit();
+                $msgError = "Hubo un error al registrar el usuario. Inténtalo de nuevo.";
             }
         }
     }
@@ -46,16 +44,10 @@
         <button type="submit">Registrarse</button>
     </form>
 
-    <!-- MENSAJES DE ERROR CONDICIONALES CON FORMATO CORTO -->
-    <?php if (isset($_GET['error'])): ?>
+    <!-- MENSAJE DE ERROR CONDICIONAL DINÁMICO -->
+    <?php if ($msgError != ""): ?>
         <p style="color: red; font-weight: bold; margin-top: 15px;">
-            <?php 
-                if ($_GET['error'] == 1) {
-                    echo "El nombre de usuario ya existe. Prueba con otro.";
-                } elseif ($_GET['error'] == 2) {
-                    echo "Hubo un error al registrar el usuario. Inténtalo de nuevo.";
-                }
-            ?>
+            <?= $msgError ?>
         </p>
     <?php endif; ?>
 

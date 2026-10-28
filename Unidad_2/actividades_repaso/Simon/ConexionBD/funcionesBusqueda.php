@@ -15,14 +15,14 @@
                 $_SESSION['nom_usuario'] = $usuarioBD['Nombre'];
                 $_SESSION['rol'] = $usuarioBD['Rol'];
                 header("Location: config.php");
-                exit();
-            }else{
-                header("Location: index.php?error=1");
-                exit();
+                exit(); // El éxito sí redirige porque avanzamos de página
+            } else {
+                // Si falla, devolvemos el texto del error (no redirigimos)
+                return "Usuario y/o contraseña incorrectos.";
             }
         }catch(PDOException $e){
             error_log("Error en SELECT: " . $e -> getMessage());
-            echo "No se pudo verificar el usuario.";
+            return "No se pudo verificar el usuario debido a un error de conexión.";
         }finally{
             require_once 'cierre.php';
         }
