@@ -1,5 +1,6 @@
 <?php
     session_start();
+    registrarJugada($_SESSION['nom_usuario'], 0);
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,6 @@
     <p><strong>La combinación correcta era: </strong><?=implode(", ", $_SESSION['combinacion_colores_texto'])?></p>
     <?=$_SESSION['solucion']?><br>
     <a href="../ManejoPartida/solucion.php"><button>Jugar otra vez</button></a>
-    <a href="../ManejoPartida/index.php"><button>Salir</button></a>
+    <a href="ranking.php"><button>Estadística</button></a>
 </body>
 </html>
