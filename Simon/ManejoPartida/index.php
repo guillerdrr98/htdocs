@@ -23,11 +23,11 @@
         <label for="nom_usuario">Nombre:</label>
         <input type="text" id="nom_usuario" name="nom_usuario" required><br><br>
 
-        <label for="num_circulos">Contraseña:</label>
+        <label for="pass">Contraseña:</label>
         <input type="password" id="pass" name="pass" required><br><br>
 
         
-        <button type="button" onclick="window.location.href='./registro.php'">Registro</button>
+        <button type="button" onclick="window.location.href='./registro.php'">Registro</button> <!-- CAMBIO PENDIENTE -->
         <button type="submit">Entrar</button>
     </form>
 

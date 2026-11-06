@@ -53,88 +53,88 @@
     }
 
     function insertarUsuario($usuario, $pass){
-    require 'conexion.php';
+        require 'conexion.php';
 
-    try{
-        $passHash = password_hash($pass, PASSWORD_DEFAULT);
+        try{
+            $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO usuarios (Nombre, Clave, Rol) VALUES (:nom, :clave, 0)";
-        $stmt = $pdo->prepare($sql);
+            $sql = "INSERT INTO usuarios (Nombre, Clave, Rol) VALUES (:nom, :clave, 0)";
+            $stmt = $pdo->prepare($sql);
     
-        $stmt->execute([
-            ':nom' => $usuario,
-            ':clave' => $passHash
-        ]);
+            $stmt->execute([
+                ':nom' => $usuario,
+                ':clave' => $passHash
+            ]);
 
-        return true; 
+            return true; 
 
-    }catch(PDOException $e){
-        error_log("Error en INSERT: " . $e -> getMessage());
-        echo "Error al insertar los datos.";
-    }finally{
-        require_once 'cierre.php';
+        }catch(PDOException $e){
+            error_log("Error en INSERT: " . $e -> getMessage());
+            echo "Error al insertar los datos.";
+        }finally{
+            require_once 'cierre.php';
+        }
     }
-}
 
-function registrarJugada($nombreUsuario, $acierto) {
-    $codigousu = obtenerIdUsuario($nombreUsuario);
+    function registrarJugada($nombreUsuario, $acierto) {
+        $codigousu = obtenerIdUsuario($nombreUsuario);
         
-    if (!$codigousu) {
-        return false; // Si no encuentra al usuario, no registra nada
+        if (!$codigousu) {
+            return false; // Si no encuentra al usuario, no registra nada
+        }
+
+        require 'conexion.php';
+        try {
+            $sql = "INSERT INTO jugadas (codigousu, acierto) VALUES (:usu, :aci)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':usu' => $codigousu,
+                ':aci' => $acierto
+            ]);
+            return true;
+        } catch(PDOException $e) {
+            error_log("Error en INSERT jugada: " . $e->getMessage());
+            return false;
+        } finally {
+            require_once 'cierre.php';
+        }
     }
 
-    require 'conexion.php';
-    try {
-        $sql = "INSERT INTO jugadas (codigousu, acierto) VALUES (:usu, :aci)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':usu' => $codigousu,
-            ':aci' => $acierto
-        ]);
-        return true;
-    } catch(PDOException $e) {
-        error_log("Error en INSERT jugada: " . $e->getMessage());
-        return false;
-    } finally {
-        require_once 'cierre.php';
+    function obtenerRanking() {
+        require_once 'conexion.php';
+        try {
+            $sql = "SELECT u.Codigo AS codigousu, u.Nombre AS nombre_usuario, SUM(j.acierto) AS aciertos
+                    FROM usuarios u
+                    INNER JOIN jugadas j ON u.Codigo = j.codigousu
+                    GROUP BY u.Codigo, u.Nombre
+                    ORDER BY aciertos DESC";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Error en RANKING: " . $e->getMessage());
+            echo "No se pudo obtener el ranking.";
+            return [];
+        } finally {
+            require_once 'cierre.php';
+        }
     }
-}
 
-function obtenerRanking() {
-    require_once 'conexion.php';
-    try {
-        $sql = "SELECT u.Codigo AS codigousu, u.Nombre AS nombre_usuario, SUM(j.acierto) AS aciertos
-                FROM usuarios u
-                INNER JOIN jugadas j ON u.Codigo = j.codigousu
-                GROUP BY u.Codigo, u.Nombre
-                ORDER BY aciertos DESC";
-
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch(PDOException $e) {
-        error_log("Error en RANKING: " . $e->getMessage());
-        echo "No se pudo obtener el ranking.";
-        return [];
-    } finally {
-        require_once 'cierre.php';
-    }
-}
-
-function obtenerIdUsuario($nombreUsuario) {
-    require_once 'conexion.php';
-    try {
-        $sql = "SELECT Codigo FROM usuarios WHERE Nombre = :nombre"; // Ajusta 'id' y 'Nombre' si tus columnas se llaman distinto (ej. codigousu, usuario)
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([':nombre' => $nombreUsuario]);
+    function obtenerIdUsuario($nombreUsuario) {
+        require_once 'conexion.php';
+        try {
+            $sql = "SELECT Codigo FROM usuarios WHERE Nombre = :nombre";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':nombre' => $nombreUsuario]);
             
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado ? $resultado['Codigo'] : null;
-    } catch(PDOException $e) {
-        error_log("Error al obtener ID de usuario: " . $e->getMessage());
-        return null;
-    } finally {
-        require_once 'cierre.php';
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $resultado ? $resultado['Codigo'] : null;
+        } catch(PDOException $e) {
+            error_log("Error al obtener ID de usuario: " . $e->getMessage());
+            return null;
+        } finally {
+            require_once 'cierre.php';
+        }
     }
-}
 ?>

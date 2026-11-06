@@ -1,15 +1,16 @@
 <?php
-session_start();
-require_once '../ConexionBD/funcionesBusqueda.php';
+    session_start();
+    require_once '../ConexionBD/funcionesBusqueda.php';
+    /*Línea para hacer que la barra sea de puntos rojos: <div style="border-top: 3px dotted #ff0000; width: <?php echo $anchoBarra; ?>px; height: 0;"></div>*/
 
-$ranking = obtenerRanking();
+    $ranking = obtenerRanking();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Simón dice... — Estadísticas Globales</title>
+    <title>Simón dice... - Estadísticas Globales</title>
 </head>
 <body>
 
