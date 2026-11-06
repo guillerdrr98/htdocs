@@ -31,7 +31,7 @@
                 <?php if (!empty($ranking)): ?>
                     <?php foreach ($ranking as $fila): 
                         // Ancho proporcional en CSS puro sin dependencias
-                        $anchoBarra = max($fila['aciertos'] * 10, 5);
+                        $anchoBarra = max($fila['aciertos'] * 10, 0);
                     ?>
                         <tr>
                             <td><?php echo htmlspecialchars($fila['codigousu']); ?></td>
