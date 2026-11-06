@@ -3,7 +3,7 @@
 
     // Seguridad: Solo el administrador (rol 1) puede acceder a esta página
     if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
-        header("Location: index.php");
+        header("Location: solucion.php");
         exit();
     }
 

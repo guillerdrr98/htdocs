@@ -9,12 +9,12 @@ $ranking = obtenerRanking();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>SIMÓN — Estadísticas Globales</title>
+    <title>Simón dice... — Estadísticas Globales</title>
 </head>
 <body>
 
     <div align="center">
-        <h2>SIMÓN - Estadísticas Globales</h2>
+        <h2>Simón dice... - Estadísticas Globales</h2>
         <p><?= $_SESSION['nom_usuario'] ?>, los resultados son:</p>
 
         <table border="1">
