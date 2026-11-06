@@ -83,7 +83,7 @@ function registrarJugada($nombreUsuario, $acierto) {
         return false; // Si no encuentra al usuario, no registra nada
     }
 
-    require_once 'conexion.php';
+    require 'conexion.php';
     try {
         $sql = "INSERT INTO jugadas (codigousu, acierto) VALUES (:usu, :aci)";
         $stmt = $pdo->prepare($sql);
@@ -103,10 +103,10 @@ function registrarJugada($nombreUsuario, $acierto) {
 function obtenerRanking() {
     require_once 'conexion.php';
     try {
-        $sql = "SELECT u.id AS codigousu, u.usuario AS nombre_usuario, SUM(j.acierto) AS aciertos
+        $sql = "SELECT u.Codigo AS codigousu, u.Nombre AS nombre_usuario, SUM(j.acierto) AS aciertos
                 FROM usuarios u
-                INNER JOIN jugadas j ON u.id = j.codigousu
-                GROUP BY u.id, u.usuario
+                INNER JOIN jugadas j ON u.Codigo = j.codigousu
+                GROUP BY u.Codigo, u.Nombre
                 ORDER BY aciertos DESC";
 
         $stmt = $pdo->prepare($sql);
@@ -124,12 +124,12 @@ function obtenerRanking() {
 function obtenerIdUsuario($nombreUsuario) {
     require_once 'conexion.php';
     try {
-        $sql = "SELECT id FROM usuarios WHERE Nombre = :nombre"; // Ajusta 'id' y 'Nombre' si tus columnas se llaman distinto (ej. codigousu, usuario)
+        $sql = "SELECT Codigo FROM usuarios WHERE Nombre = :nombre"; // Ajusta 'id' y 'Nombre' si tus columnas se llaman distinto (ej. codigousu, usuario)
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':nombre' => $nombreUsuario]);
             
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado ? $resultado['id'] : null;
+        return $resultado ? $resultado['Codigo'] : null;
     } catch(PDOException $e) {
         error_log("Error al obtener ID de usuario: " . $e->getMessage());
         return null;

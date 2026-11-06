@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'funcionesBusqueda.php';
+require_once '../ConexionBD/funcionesBusqueda.php';
 
 $ranking = obtenerRanking();
 ?>
@@ -15,7 +15,7 @@ $ranking = obtenerRanking();
 
     <div align="center">
         <h2>SIMÓN - Estadísticas Globales</h2>
-        <p><?php $_SESSION['nom_usuario'] ?>, los resultados son:</p>
+        <p><?= $_SESSION['nom_usuario'] ?>, los resultados son:</p>
 
         <table border="1">
             <thead>
