@@ -22,15 +22,15 @@
 <body style="background-color: <?= $color_form ?>">
     <h2>Configuración Simón dice...</h2>
     
-    <form action="solucion.php" method="POST" autocomplete="off">
+    <form action="solucion.php" method="POST">
         <label for="num_circulos">Número de círculos (entre 4 y 8):</label>
-        <input type="number" id="num_circulos" name="num_circulos" value="<?= $num_cir_cookie ?>" min="4" max="8" required autocomplete="off"><br><br>
+        <input type="number" id="num_circulos" name="num_circulos" value="<?= $num_cir_cookie ?>" min="4" max="8" required><br><br>
 
         <label for="num_colores">Número de colores a usar (entre 2 y 8):</label>
-        <input type="number" id="num_colores" name="num_colores" value="<?= $num_colores_cookie ?>" min="2" max="8" required autocomplete="off"><br><br>
+        <input type="number" id="num_colores" name="num_colores" value="<?= $num_colores_cookie ?>" min="2" max="8" required><br><br>
 
         <label for="color_fondo">Color de fondo:</label>
-        <input type="text" id="color_fondo" name="color_fondo" value="<?= $color_form ?>" autocomplete="off"><br><br>
+        <input type="text" id="color_fondo" name="color_fondo" value="<?= $color_form ?>"><br><br>
     
         <div style="display: inline-flex; gap: 10px; align-items: center;">
             <a href="index.php"><button type="button">Volver al inicio</button></a>
