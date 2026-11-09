@@ -55,7 +55,6 @@
         // Subida al servidor si todo es correcto
         $subido_correctamente = false;
         if ($uploadOK === 1) {
-            $target_file = $target_dir . $nuevo_nombre;
             if (move_uploaded_file($_FILES["emoji"]["tmp_name"], $target_file)) {
                 $subido_correctamente = true;
             }
