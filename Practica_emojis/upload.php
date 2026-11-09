@@ -28,10 +28,11 @@
         }
 
         // 3. Comprobamos si el fichero ya existe
-        if(file_exists($target_file)){
+        /* MODIFICACIÓN 1: ELIMINAMOS ESTE BLOQUE PARA IMPLEMENTAR RENOMBRADO */
+        /*if(file_exists($target_file)){
             $mensajes_error[] = "Ese emoji ya existe en la galería.";
             $uploadOK = 0;
-        }
+        }*/
 
         // 4. Comprobamos el tamaño máximo (200 KB = 200 * 1024 bytes)
         $tamano_maximo = 200 * 1024;
@@ -41,8 +42,12 @@
         }
 
         // Subida al servidor si todo es correcto
+        /* MODIFICACIÓN 1: IMPLEMENTAMOS LA CREACIÓN DEL NUEVO NOMBRE */
         $subido_correctamente = false;
         if ($uploadOK === 1) {
+            $nuevo_nombre = time() . "-" . $originalName;
+            $target_file = $target_dir . $nuevo_nombre;
+
             if (move_uploaded_file($_FILES["emoji"]["tmp_name"], $target_file)) {
                 $subido_correctamente = true;
             }
@@ -66,7 +71,7 @@
 
     <?php if (!empty($mensajes_error)): ?>
         <?php foreach ($mensajes_error as $error): ?>
-            <p><?= $error; ?></p>
+            <p style="color: red;"><?= $error; ?></p>
         <?php endforeach; ?>
         <p>La galería no cambia: no se ha guardado nada</p>
     <?php endif; ?>
