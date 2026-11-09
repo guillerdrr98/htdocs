@@ -86,10 +86,10 @@
 
     <?php if (!empty($mensajes_error)): ?>
         <?php foreach ($mensajes_error as $error): ?>
-            <p><?= $error; ?></p>
+            <p style="color: red;"><?= $error; ?></p>
         <?php endforeach; ?>
         <?php if (isset($mensaje_borrado)): ?>
-            <p><?= $mensaje_borrado; ?></p>
+            <p style="color: green;"><?= $mensaje_borrado; ?></p>
         <?php endif; ?>
         <?php if ($subidos_correctamente === 0): ?>
             <p>La galería no cambia: no se ha guardado nada</p>
