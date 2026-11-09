@@ -40,12 +40,12 @@
             $uploadOK = 0;
         }
 
-        /* MODIFICACIÓN 2: AÑADIMOS UN FILTRO PARA COMPROBAR QUE NO SE EXCEDE EL LÍMITE DE LA GALERÍA*/
+        /* MODIFICACIÓN: AÑADIMOS UN FILTRO PARA COMPROBAR QUE NO SE EXCEDE EL LÍMITE DE LA GALERÍA*/
         // 5. Comprobar número máximo de emojis en la galería (por ejemplo, máximo 10)
-        $max_emojis = 10; 
+        $max_emojis = 10; //Declaramos un límite de archivos
         if (is_dir($target_dir)) {
             // Contamos los ficheros actuales excluyendo '.' y '..'
-            $ficheros_actuales = array_diff(scandir($target_dir), ['.', '..']);
+            $ficheros_actuales = array_diff(scandir($target_dir), ['.', '..']); //Eliminamos . y .. de los elementos de target_dir
             if (count($ficheros_actuales) >= $max_emojis) {
                 $mensajes_error[] = "La galería está llena (máximo " . $max_emojis . " emojis).";
                 $uploadOK = 0;
