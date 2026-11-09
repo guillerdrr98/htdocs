@@ -83,7 +83,7 @@
         <p>La galería no cambia: no se ha guardado nada</p>
     <?php endif; ?>
 
-    <p><a href="index.html">Subir otro emoji</a></p>
+    <p><a href="index_base.html">Subir otro emoji</a></p>
 
     <hr>
 

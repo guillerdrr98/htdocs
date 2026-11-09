@@ -96,7 +96,7 @@
         <?php endif; ?>
     <?php endif; ?>
 
-    <p><a href="index.html">Subir otro emoji</a></p>
+    <p><a href="index_mod.html">Subir otro emoji</a></p>
 
     <hr>
 
