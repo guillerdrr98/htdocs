@@ -25,7 +25,7 @@
             $imageFileType = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
             // 2. Comprobar si es una imagen real
-            $check = @getimagesize($_FILES["emoji"]["tmp_name"][$i]);
+            $check = getimagesize($_FILES["emoji"]["tmp_name"][$i]);
             if ($check === false) {
                 $mensajes_error[] = "El fichero '$originalName' no es una imagen.";
                 $uploadOK = 0;
