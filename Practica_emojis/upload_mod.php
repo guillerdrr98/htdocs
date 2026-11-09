@@ -3,6 +3,17 @@
     $mensajes_error = [];
     $subidos_correctamente = 0;
 
+    // MODIFICACIÓN: LÓGICA PARA BORRAR UN EMOJI MEDIANTE POST
+    if (isset($_POST['archivo_borrar'])) {
+        $archivo_a_borrar = basename($_POST['archivo_borrar']);
+        $ruta_completa = $target_dir . $archivo_a_borrar;
+        
+        if (file_exists($ruta_completa)) {
+            unlink($ruta_completa);
+            $mensaje_borrado = "Emoji borrado correctamente.";
+        }
+    }
+
     // 1. Comprobar si se ha enviado el formulario y si hay ficheros seleccionados
     if (!isset($_FILES["emoji"]) || empty($_FILES["emoji"]["name"][0]) || $_FILES["emoji"]["error"][0] === UPLOAD_ERR_NO_FILE) {
         $mensajes_error[] = "No has seleccionado ningún fichero.";
@@ -77,6 +88,9 @@
         <?php foreach ($mensajes_error as $error): ?>
             <p><?= $error; ?></p>
         <?php endforeach; ?>
+        <?php if (isset($mensaje_borrado)): ?>
+            <p><?= $mensaje_borrado; ?></p>
+        <?php endif; ?>
         <?php if ($subidos_correctamente === 0): ?>
             <p>La galería no cambia: no se ha guardado nada</p>
         <?php endif; ?>
@@ -89,12 +103,21 @@
     <h2>Galería</h2>
     <div>
         <?php
-        // Mostrar los emojis actuales de la carpeta
+        // MODIFICACIÓN: MOSTRAR CADA IMAGEN CON UN FORMULARIO DE BORRADO (POST)
         if (is_dir($target_dir)) {
             $ficheros = scandir($target_dir);
             foreach ($ficheros as $archivo) {
                 if ($archivo !== '.' && $archivo !== '..') {
-                    echo '<img src="' . $target_dir . $archivo . '" alt="' . $archivo . '" width="80">';
+                    echo '<div style="display: inline-block; margin: 10px; text-align: center;">';
+                    echo '<img src="' . $target_dir . $archivo . '" alt="' . $archivo . '" width="80"><br>';
+                    
+                    // Mini formulario POST para borrar sin usar parámetros en la URL (?borrar=...)
+                    echo '<form action="upload_mod.php" method="POST" style="margin-top: 5px;">';
+                    echo '<input type="hidden" name="archivo_borrar" value="' . $archivo . '">';
+                    echo '<button type="submit">Borrar</button>';
+                    echo '</form>';
+                    
+                    echo '</div>';
                 }
             }
         }
