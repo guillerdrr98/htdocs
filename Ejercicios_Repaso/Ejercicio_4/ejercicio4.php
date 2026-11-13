@@ -30,7 +30,7 @@
             <!-- Opción 1: Azul -->
             <tr>
                 <td>
-                    <button type="submit" name="accion" value="azul"><img src="recursos/azul.png"/></button>
+                    <button type="submit" name="accion" value="azul"><img src="recursos/azul.png" height="50px" width="50px"/></button>
                 </td>
                 <td>
                     <!-- SVG donde el número de sesión se usa en dos sitios: ancho del rectángulo y texto -->
@@ -46,7 +46,7 @@
             <!-- Opción 2: Naranja -->
             <tr>
                 <td>
-                    <button type="submit" name="accion" value="naranja"><img src="recursos/naranja.png"/></button>
+                    <button type="submit" name="accion" value="naranja"><img src="recursos/naranja.png" height="50px" width="50px"/></button>
                 </td>
                 <td>
                     <!-- SVG donde el número de sesión se usa en dos sitios: ancho del rectángulo y texto -->
