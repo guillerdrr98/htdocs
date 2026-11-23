@@ -46,7 +46,6 @@
     actualizarPuntuacion($_SESSION['login'], $deltaPuntos, $intentos);
 
     // 2. Limpiamos el mazo y los intentos de la sesión para que no se duplique al recargar (F5)
-    //    y para que si vuelve a jugar tenga partida nueva
     unset($_SESSION['mazo']);
     unset($_SESSION['intentos']);
 
