@@ -26,8 +26,9 @@
         <label for="pass">Contraseña:</label>
         <input type="password" id="pass" name="pass" required><br><br>
 
-        
-        <button type="button" onclick="window.location.href='./registro.php'">Registro</button> <!-- CAMBIO PENDIENTE -->
+        <form action="./registro.php">
+            <button type="submit">Registro</button>
+        </form>
         <button type="submit">Entrar</button>
     </form>
 
