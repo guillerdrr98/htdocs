@@ -26,9 +26,7 @@
         <label for="pass">Contraseña:</label>
         <input type="password" id="pass" name="pass" required><br><br>
 
-        <form action="./registro.php">
-            <button type="submit">Registro</button>
-        </form>
+        <button><a href="./registro.php" style="text-decoration: none; color: inherit;">Registrarse</a></button>
         <button type="submit">Entrar</button>
     </form>
 
