@@ -40,7 +40,7 @@
         <label for="pass">Contraseña:</label>
         <input type="password" id="pass" name="pass" required><br><br>
 
-        <button type="button" onclick="window.location.href='./index.php'">Volver</button>
+        <button><a href="./index.php" style="text-decoration: none; color: inherit;">Volver</a></button>
         <button type="submit">Registrarse</button>
     </form>
 
