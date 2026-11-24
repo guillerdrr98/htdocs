@@ -22,26 +22,22 @@
     }
 
     /**
-     * Genera el HTML con los emojis disponibles para seleccionar en un contacto.
+     * Genera el HTML con el emoji asignado a un contacto según su posición en el lote.
      *
      * @param array<int, string> $emojis Lista de nombres de archivo (ej. emoji1.png).
      * @param int $indiceContacto Índice del contacto dentro del lote (0, 1, 2...).
-     * @return string Fragmento HTML con las imágenes y radios.
+     * @return string Fragmento HTML con la imagen del emoji asignado.
      */
     function pintarEmojis(array $emojis, int $indiceContacto): string
     {
-        $html = "";
-        foreach ($emojis as $i => $archivo) {
-            $archivoSeguro = htmlspecialchars($archivo, ENT_QUOTES, 'UTF-8');
-            $valorEmoji = htmlspecialchars(pathinfo($archivo, PATHINFO_FILENAME), ENT_QUOTES, 'UTF-8');
-            $checked = ($i === 0) ? " checked" : "";
-
-            $html .= "<label style='margin-right: 10px; display: inline-flex; align-items: center; gap: 4px;'>";
-            $html .= "<input type='radio' name='contactos[$indiceContacto][emoji]' value='$valorEmoji'$checked required>";
-            $html .= "<img src='../imagenes/$archivoSeguro' alt='$valorEmoji' width='28' height='28'>";
-            $html .= "</label>";
+        if (empty($emojis)) {
+            return "";
         }
 
-        return $html;
+        $archivo = $emojis[$indiceContacto % count($emojis)];
+        $archivoSeguro = htmlspecialchars($archivo, ENT_QUOTES, 'UTF-8');
+        $nombreEmoji = htmlspecialchars(pathinfo($archivo, PATHINFO_FILENAME), ENT_QUOTES, 'UTF-8');
+
+        return "<img src='../imagenes/$archivoSeguro' alt='$nombreEmoji' width='28' height='28'>";
     }
 ?>

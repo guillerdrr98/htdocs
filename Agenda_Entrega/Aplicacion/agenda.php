@@ -32,8 +32,16 @@
 
     <form action="grabado.php" method="POST">
         <?php for ($i = 0; $i < $cantidad; $i++): ?>
-            <fieldset style="margin-bottom: 15px;">
+            <?php
+            $archivoAsignado = $emojis[$i % count($emojis)];
+            $valorEmoji = pathinfo($archivoAsignado, PATHINFO_FILENAME);
+            ?>
+            <fieldset>
                 <legend>Contacto <?= $i + 1 ?></legend>
+
+                <span>Emoji asignado:</span>
+                <?= pintarEmojis($emojis, $i) ?>
+                <input type="hidden" name="contactos[<?= $i ?>][emoji]" value="<?= htmlspecialchars($valorEmoji, ENT_QUOTES, 'UTF-8') ?>"><br><br>
 
                 <label for="nombre_<?= $i ?>">Nombre:</label>
                 <input type="text" id="nombre_<?= $i ?>" name="contactos[<?= $i ?>][nombre]" maxlength="30" required><br><br>
@@ -45,11 +53,9 @@
                 <input type="text" id="telefono_<?= $i ?>" name="contactos[<?= $i ?>][telefono]" pattern="\d{9}" maxlength="9" required><br><br>
 
                 <label for="email_<?= $i ?>">Email:</label>
-                <input type="email" id="email_<?= $i ?>" name="contactos[<?= $i ?>][email]" maxlength="80" required><br><br>
-
-                <span>Emoji:</span><br>
-                <?= pintarEmojis($emojis, $i) ?>
+                <input type="email" id="email_<?= $i ?>" name="contactos[<?= $i ?>][email]" maxlength="80" required>
             </fieldset>
+            <br>
         <?php endfor; ?>
 
         <button type="submit">Grabar</button>

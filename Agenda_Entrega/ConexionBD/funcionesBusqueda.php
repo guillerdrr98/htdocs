@@ -249,7 +249,7 @@
     }
 
     /**
-     * Obtiene el total de contactos, porcentaje, último alta y gráfica por usuario.
+     * Obtiene el total de contactos, porcentaje sobre max_contactos, último alta y gráfica por usuario.
      *
      * @return array<int, array<string, mixed>> Lista de usuarios ordenada por total de contactos.
      */
@@ -258,6 +258,10 @@
         require '../ConexionBD/conexion.php';
 
         try {
+            $stmtConfig = $pdo->prepare("SELECT max_contactos FROM configuracion WHERE id = 1");
+            $stmtConfig->execute();
+            $maxContactos = (int) ($stmtConfig->fetchColumn() ?: 50);
+
             $sql = "SELECT u.codigo,
                            u.nombre,
                            COUNT(c.id) AS total_contactos,
@@ -270,14 +274,10 @@
             $stmt->execute();
             $filas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $totalGlobal = 0;
-            foreach ($filas as $fila) {
-                $totalGlobal += (int) $fila['total_contactos'];
-            }
-
             foreach ($filas as &$fila) {
                 $cont = (int) $fila['total_contactos'];
-                $fila['porcentaje'] = ($totalGlobal > 0) ? ($cont * 100) / $totalGlobal : 0.0;
+                $porcentaje = ($maxContactos > 0) ? ($cont * 100.0) / $maxContactos : 0.0;
+                $fila['porcentaje'] = min(100.0, $porcentaje);
             }
             unset($fila);
 

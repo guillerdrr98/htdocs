@@ -24,10 +24,7 @@
     <title>Totales de Contactos - Agenda</title>
 </head>
 <body>
-    <p>PANTALLA: totales.php</p>
-    <hr>
-
-    <h1>AGENDA &mdash; Totales</h1>
+    <h1>AGENDA - Totales</h1>
 
     <p><?= htmlspecialchars($nomUsuario) ?>, estos son los contactos guardados:</p>
 

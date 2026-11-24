@@ -1,5 +1,5 @@
 <?php
-    $dsn = "mysql:host=localhost;dbname=agendabd;charset=utf8mb4";
+    $dsn = "mysql:host=localhost;dbname=agenda;charset=utf8mb4";
     try{
         $pdo = new PDO($dsn, "root", "", [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

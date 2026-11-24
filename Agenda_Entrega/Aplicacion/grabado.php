@@ -81,7 +81,7 @@
 
     <p>
         <a href="inicio.php">Grabar más contactos</a>
-        <a href="../Estadisticas/totales.php">Ver totales</a>
+        <a href="totales.php">Ver totales</a>
         <a href="salir.php">Cerrar sesión</a>
     </p>
 </body>
