@@ -22,7 +22,7 @@
     <h1>Agenda de Contactos</h1>
     <p>
         Usuario: <strong><?= htmlspecialchars($nomUsuario) ?></strong> |
-        <a href="../Estadisticas/totales.php">Ver totales</a> |
+        <a href="totales.php">Ver totales</a> |
         <a href="salir.php">Cerrar sesión</a>
     </p>
 

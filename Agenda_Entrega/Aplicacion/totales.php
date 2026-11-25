@@ -59,10 +59,8 @@
                     <td><?= $esActual ? '<strong>' . (int) $u['total_contactos'] . '</strong>' : (int) $u['total_contactos'] ?></td>
                     <td><?= $esActual ? '<strong>' . htmlspecialchars($porcentajeFmt) . '</strong>' : htmlspecialchars($porcentajeFmt) ?></td>
                     <td><?= $esActual ? '<strong>' . $fechaFormateada . '</strong>' : $fechaFormateada ?></td>
-                    <td>
-                        <?php if ($anchoBarra > 0): ?>
-                            <progress max="200" value="<?= $anchoBarra ?>"></progress>
-                        <?php endif; ?>
+                    <td align="left" style="width: 220px;">
+                        <div style="background-color: #0073e6; height: 12px; width: <?php echo $anchoBarra; ?>px;"></div>
                     </td>
                 </tr>
             <?php endforeach; ?>
